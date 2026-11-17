@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="es-AR" class="con-muestras">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>La Roca · Muro de escalada en Mar del Plata</title>
+  <meta name="description" content="La Roca es un muro de escalada en el Complejo Trebi, Mar del Plata. Escalar para despejar la cabeza, encontrarte con tu gente y ganar fuerza. Abrimos pronto: anotate para la apertura.">
+  <link rel="canonical" href="https://murolaroca.com.ar/">
+  <meta name="theme-color" content="#102a40">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:site_name" content="La Roca">
+  <meta property="og:title" content="La Roca · Muro de escalada en Mar del Plata">
+  <meta property="og:description" content="Arriba, la cabeza se calla. Un muro de escalada en el Complejo Trebi para despejarte, encontrarte con tu gente y ganar fuerza.">
+  <meta property="og:url" content="https://murolaroca.com.ar/">
+
+  <link rel="icon" href="img/marca/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://assets.mixkit.co">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display:ital@0;1&family=Permanent+Marker&display=swap">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script type="module" src="js/sitio.js"></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <a class="marca" href="#arriba">
+      <img src="img/marca/la-roca-horizontal-fondo-oscuro.svg" alt="La Roca, volver al inicio" width="357" height="104">
+    </a>
+    <nav class="navegacion" aria-label="Secciones">
+      <ul>
+        <li><a href="#que-te-da">Qué te da</a></li>
+        <li><a href="#escenas">Escenas</a></li>
+        <li><a href="#bruno">Bruno</a></li>
+        <li><a href="#preguntas">Preguntas</a></li>
+      </ul>
+    </nav>
+    <button type="button" class="boton-videos" id="boton-videos" hidden>
+      <svg class="icono icono-pausa" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3v14H7zM14 5h3v14h-3z"/></svg>
+      <svg class="icono icono-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      <span class="boton-videos-texto">Pausar videos</span>
+    </button>
+    <a class="boton boton-chico" href="#cordada">Anotate</a>
+  </header>
+
+  <main id="contenido">
+    <!-- ============ PORTADA ============
+         Fondo de arena con el logo y un arco grande, con la forma del arco del
+         símbolo, que hace de ventana al video. Al bajar, el arco se agranda
+         hasta llenar la pantalla y entrás al video. -->
+    <section class="portada" id="arriba" aria-labelledby="titulo-portada">
+      <div class="portada-fija">
+        <!-- VIDEO DE MUESTRA · Mixkit #50925 · reemplazar por video propio -->
+        <video class="portada-video" data-ambiente autoplay muted loop playsinline preload="auto"
+               width="1280" height="720" aria-hidden="true"
+               poster="https://assets.mixkit.co/videos/50925/50925-thumb-720-0.jpg">
+          <source src="https://assets.mixkit.co/videos/50925/50925-360.mp4" type="video/mp4" media="(max-width: 47.99em)">
+          <source src="https://assets.mixkit.co/videos/50925/50925-720.mp4" type="video/mp4">
+        </video>
+
+        <div class="placa-datos">
+          <p>Complejo Trebi · Mar del Plata</p>
+          <p>Abrimos pronto</p>
+        </div>
+
+        <picture class="portada-logo">
+          <source srcset="img/marca/la-roca-horizontal-fondo-oscuro.svg" media="(prefers-color-scheme: dark)">
+          <img src="img/marca/la-roca-horizontal.svg" alt="La Roca" width="357" height="104">
+        </picture>
+        <div class="arco" aria-hidden="true"></div>
+        <p class="placa-pista" aria-hidden="true">Bajá para entrar</p>
+
+        <div class="portada-texto">
+          <p class="antetitulo">La Roca · Muro de escalada en Mar del Plata</p>
+          <h1 id="titulo-portada">Arriba, la cabeza <em>se calla</em>.</h1>
+          <p class="portada-bajada">La Roca es un muro de escalada en el Complejo Trebi para despejar la cabeza, encontrarte con tu gente y ganar fuerza sin contar repeticiones.</p>
+          <a class="boton" href="#cordada">Anotate para la apertura</a>
+        </div>
+
+        <span class="muestra">Video de muestra</span>
+      </div>
+    </section>
+
+    <!-- ============ MANIFIESTO ============ -->
+    <section class="manifiesto noche" aria-label="Manifiesto">
+      <p class="manifiesto-texto" data-palabras>Venís por el desafío. Te quedás por cómo se siente tu <em>cabeza</em> allá arriba y por la <em>gente</em> que te alienta desde abajo.</p>
+    </section>
+
+    <!-- ============ LO QUE TE DA ============ -->
+    <section class="que-te-da noche" id="que-te-da" aria-labelledby="titulo-que-te-da">
+      <header class="seccion-cabeza">
+        <h2 id="titulo-que-te-da">Lo que te da <em>escalar</em></h2>
+        <p>Ordenado por lo que más nos importa.</p>
+      </header>
+
+      <article class="capitulo" aria-labelledby="cap-cabeza">
+        <div class="capitulo-medio">
+          <!-- VIDEO DE MUESTRA · Mixkit #41029 · reemplazar por video propio -->
+          <video data-ambiente muted loop playsinline preload="none" loading="lazy"
+                 width="1280" height="720" aria-hidden="true"
+                 poster="https://assets.mixkit.co/videos/41029/41029-thumb-720-0.jpg">
+            <source src="https://assets.mixkit.co/videos/41029/41029-360.mp4" type="video/mp4" media="(max-width: 47.99em)">
+            <source src="https://assets.mixkit.co/videos/41029/41029-720.mp4" type="video/mp4">
+          </video>
+          <span class="palabra-gigante" aria-hidden="true">Cabeza</span>
+          <span class="muestra">Video de muestra</span>
+        </div>
+        <div class="capitulo-texto">
+          <p class="capitulo-orden"><span class="cinta cinta-sol">Primero</span> la cabeza</p>
+          <h3 id="cap-cabeza">Una hora sin pensar en otra cosa.</h3>
+          <p>En la pared no hay notificaciones: hay una presa, la siguiente y tu respiración. Escalar te pide estar presente, leer el problema y animarte a soltar el miedo de a poco. Esa calma se queda con vos cuando bajás.</p>
+          <ul class="lista-presas">
+            <li>Atención plena, sin tener que forzarla</li>
+            <li>Confianza que se nota afuera del muro</li>
+            <li>El error como parte del juego</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="capitulo capitulo-invertido" aria-labelledby="cap-gente">
+        <div class="capitulo-medio">
+          <!-- VIDEO DE MUESTRA · Mixkit #41023 · reemplazar por video propio -->
+          <video data-ambiente muted loop playsinline preload="none" loading="lazy"
+                 width="1280" height="720" aria-hidden="true"
+                 poster="https://assets.mixkit.co/videos/41023/41023-thumb-720-0.jpg">
+            <source src="https://assets.mixkit.co/videos/41023/41023-360.mp4" type="video/mp4" media="(max-width: 47.99em)">
+            <source src="https://assets.mixkit.co/videos/41023/41023-720.mp4" type="video/mp4">
+          </video>
+          <span class="palabra-gigante" aria-hidden="true">Gente</span>
+          <span class="muestra">Video de muestra</span>
+        </div>
+        <div class="capitulo-texto">
+          <p class="capitulo-orden"><span class="cinta cinta-arena">Después</span> la gente</p>
+          <h3 id="cap-gente">Escalás vos. Te alienta todo el muro.</h3>
+          <p>Escalar es mucho más social de lo que parece. Alguien te pasa la secuencia, otro te grita «¡dale!» desde abajo y, cuando llegás, festejan personas que hace un rato no conocías. A la tercera semana ya son tu grupo.</p>
+          <ul class="lista-presas">
+            <li>Gente nueva, sin tener que forzar la charla</li>
+            <li>Planes que siguen después del muro</li>
+            <li>Un grupo que te espera cada semana</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="capitulo" aria-labelledby="cap-cuerpo">
+        <div class="capitulo-medio">
+          <!-- VIDEO DE MUESTRA · Mixkit #50914 · reemplazar por video propio -->
+          <video data-ambiente muted loop playsinline preload="none" loading="lazy"
+                 width="1280" height="720" aria-hidden="true"
+                 poster="https://assets.mixkit.co/videos/50914/50914-thumb-720-0.jpg">
+            <source src="https://assets.mixkit.co/videos/50914/50914-360.mp4" type="video/mp4" media="(max-width: 47.99em)">
+            <source src="https://assets.mixkit.co/videos/50914/50914-720.mp4" type="video/mp4">
+          </video>
+          <span class="palabra-gigante" aria-hidden="true">Cuerpo</span>
+          <span class="muestra">Video de muestra</span>
+        </div>
+        <div class="capitulo-texto">
+          <p class="capitulo-orden"><span class="cinta cinta-mar">Y también</span> el cuerpo</p>
+          <h3 id="cap-cuerpo">Fuerza que se entrena jugando.</h3>
+          <p>Espalda, brazos, abdomen, piernas y manos trabajan en el mismo movimiento. No contás repeticiones: resolvés problemas. Te vas con el cuerpo cansado y la cabeza liviana.</p>
+          <ul class="lista-presas">
+            <li>Fuerza de todo el cuerpo a la vez</li>
+            <li>Movilidad, coordinación y equilibrio</li>
+            <li>Un entrenamiento que no se siente rutina</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ ESCENAS ============ -->
+    <section class="escenas noche" id="escenas" aria-labelledby="titulo-escenas">
+      <header class="seccion-cabeza escenas-cabeza">
+        <div>
+          <h2 id="titulo-escenas">Escenas de una tarde en el muro</h2>
+          <p>Tocá una para verla grande. <span class="nota-muestra">Son videos de muestra hasta que filmemos los nuestros.</span></p>
+        </div>
+        <div class="escenas-controles">
+          <button type="button" class="boton-flecha" data-direccion="-1" aria-label="Escena anterior">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <button type="button" class="boton-flecha" data-direccion="1" aria-label="Escena siguiente">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="carril" tabindex="0" role="region" aria-label="Escenas">
+        <ul role="list">
+          <li>
+            <button type="button" class="escena" data-video="41035" aria-haspopup="dialog">
+              <video data-ambiente muted loop playsinline preload="none" loading="lazy" width="360" height="640" aria-hidden="true"
+                     poster="https://assets.mixkit.co/videos/41035/41035-thumb-360-0.jpg">
+                <source src="https://assets.mixkit.co/videos/41035/41035-360.mp4" type="video/mp4">
+              </video>
+              <span class="cinta cinta-sol" aria-hidden="true">Ritual</span>
+              <span class="escena-texto">El magnesio antes de subir</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="escena" data-video="50913" aria-haspopup="dialog">
+              <video data-ambiente muted loop playsinline preload="none" loading="lazy" width="360" height="640" aria-hidden="true"
+                     poster="https://assets.mixkit.co/videos/50913/50913-thumb-360-0.jpg">
+                <source src="https://assets.mixkit.co/videos/50913/50913-360.mp4" type="video/mp4">
+              </video>
+              <span class="cinta cinta-arena" aria-hidden="true">Foco</span>
+              <span class="escena-texto">Leer la vía, una presa por vez</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="escena" data-video="41036" aria-haspopup="dialog">
+              <video data-ambiente muted loop playsinline preload="none" loading="lazy" width="360" height="640" aria-hidden="true"
+                     poster="https://assets.mixkit.co/videos/41036/41036-thumb-360-0.jpg">
+                <source src="https://assets.mixkit.co/videos/41036/41036-360.mp4" type="video/mp4">
+              </video>
+              <span class="cinta cinta-mar" aria-hidden="true">De a dos</span>
+              <span class="escena-texto">Subir al lado de alguien</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="escena" data-video="50911" aria-haspopup="dialog">
+              <video data-ambiente muted loop playsinline preload="none" loading="lazy" width="360" height="640" aria-hidden="true"
+                     poster="https://assets.mixkit.co/videos/50911/50911-thumb-360-0.jpg">
+                <source src="https://assets.mixkit.co/videos/50911/50911-360.mp4" type="video/mp4">
+              </video>
+              <span class="cinta cinta-sol" aria-hidden="true">Mirada</span>
+              <span class="escena-texto">Alguien que te mira y te corrige</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="escena" data-video="50928" aria-haspopup="dialog">
+              <video data-ambiente muted loop playsinline preload="none" loading="lazy" width="360" height="640" aria-hidden="true"
+                     poster="https://assets.mixkit.co/videos/50928/50928-thumb-360-0.jpg">
+                <source src="https://assets.mixkit.co/videos/50928/50928-360.mp4" type="video/mp4">
+              </video>
+              <span class="cinta cinta-arena" aria-hidden="true">Beta</span>
+              <span class="escena-texto">Pasarse la secuencia</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="escena" data-video="50920" aria-haspopup="dialog">
+              <video data-ambiente muted loop playsinline preload="none" loading="lazy" width="360" height="640" aria-hidden="true"
+                     poster="https://assets.mixkit.co/videos/50920/50920-thumb-360-0.jpg">
+                <source src="https://assets.mixkit.co/videos/50920/50920-360.mp4" type="video/mp4">
+              </video>
+              <span class="cinta cinta-mar" aria-hidden="true">Arriba</span>
+              <span class="escena-texto">La primera vez que llegás</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="escena" data-video="50924" aria-haspopup="dialog">
+              <video data-ambiente muted loop playsinline preload="none" loading="lazy" width="360" height="640" aria-hidden="true"
+                     poster="https://assets.mixkit.co/videos/50924/50924-thumb-360-0.jpg">
+                <source src="https://assets.mixkit.co/videos/50924/50924-360.mp4" type="video/mp4">
+              </video>
+              <span class="cinta cinta-sol" aria-hidden="true">Después</span>
+              <span class="escena-texto">Esa cara de «lo hice»</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+      <p class="visually-hidden" role="status" aria-live="polite" id="estado-escenas"></p>
+    </section>
+
+    <!-- ============ PRIMERA VEZ ============ -->
+    <section class="primera-vez dia" id="primera-vez" aria-labelledby="titulo-primera-vez">
+      <header class="seccion-cabeza">
+        <h2 id="titulo-primera-vez">Tu primera <em>vez</em></h2>
+        <p>No hace falta experiencia ni estar en forma. Todo el mundo empezó de cero.</p>
+      </header>
+      <ol class="via">
+        <li>
+          <h3>Venís como estás</h3>
+          <p>Ropa cómoda y ganas de probar. Nada más.</p>
+        </li>
+        <li>
+          <h3>Aprendés lo básico</h3>
+          <p>Cómo moverte, cómo caer y cómo leer una vía, con alguien que te acompaña.</p>
+        </li>
+        <li>
+          <h3>Probás, te caés, volvés</h3>
+          <p>Caerse es parte. Cada intento te enseña algo del siguiente.</p>
+        </li>
+        <li>
+          <h3>Llegás arriba</h3>
+          <p>Y en ese momento entendés por qué la gente vuelve.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ BRUNO ============ -->
+    <section class="bruno noche" id="bruno" aria-labelledby="titulo-bruno">
+      <div class="bruno-medio">
+        <!-- VIDEO PENDIENTE: acá va un video de Bruno escalando o enseñando.
+             Mientras tanto se muestra la textura de un muro (Mixkit #50926), sin personas. -->
+        <video data-ambiente muted loop playsinline preload="none" loading="lazy"
+               width="1280" height="720" aria-hidden="true"
+               poster="https://assets.mixkit.co/videos/50926/50926-thumb-720-0.jpg">
+          <source src="https://assets.mixkit.co/videos/50926/50926-360.mp4" type="video/mp4" media="(max-width: 47.99em)">
+          <source src="https://assets.mixkit.co/videos/50926/50926-720.mp4" type="video/mp4">
+        </video>
+        <span class="cinta cinta-arena bruno-pendiente">Acá va el video de Bruno</span>
+      </div>
+      <div class="bruno-texto">
+        <p class="antetitulo">Quién te guía</p>
+        <h2 id="titulo-bruno">Bruno Castro</h2>
+        <p class="bruno-rol">Socio fundador de La Roca</p>
+        <p>Bruno está conectado con la roca desde los 17 años. Es guía profesional recibido en la EPGAMT e instructor de escalada deportiva, y desde 2018 enseña a escalar en las sierras de Tandilia, entre Mar del Plata y Balcarce. Ahora trae esa forma de enseñar al muro: con calma, con técnica y disfrutando.</p>
+        <ul class="credenciales" role="list">
+          <li>Guía profesional EPGAMT</li>
+          <li>Instructor de escalada deportiva</li>
+          <li>Atleta del team Makalu</li>
+          <li>Enseña desde 2018</li>
+        </ul>
+        <blockquote class="cita">
+          <p>«En la escalada siempre está permitido caerse.»</p>
+          <footer>Bruno</footer>
+        </blockquote>
+        <p class="bruno-enlaces">
+          <a href="https://brunocastroescalada.com.ar/" rel="noopener">Del muro a la sierra: las salidas de Bruno <span aria-hidden="true">↗</span></a>
+          <a href="https://www.instagram.com/brunocastro.escalada" rel="noopener">@brunocastro.escalada <span aria-hidden="true">↗</span></a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ CORDADA ============ -->
+    <section class="cordada dia" id="cordada" aria-labelledby="titulo-cordada">
+      <div class="cordada-texto">
+        <p class="antetitulo">Comunidad</p>
+        <h2 id="titulo-cordada">Sumate a la primera <em>cordada</em></h2>
+        <p>Una cordada es el grupo que escala junto y se cuida. Estamos armando la primera de La Roca: la gente que va a estrenar el muro. Dejanos tus datos y te avisamos antes que a nadie cuándo abrimos.</p>
+        <h3 class="cordada-subtitulo">Lo que se viene</h3>
+        <ul class="lista-presas">
+          <li>Clases para empezar de cero</li>
+          <li>Noches de muro con música</li>
+          <li>Desafíos del mes para todos los niveles</li>
+          <li>Salidas a la sierra con Bruno</li>
+        </ul>
+      </div>
+
+      <!-- Para conectar el formulario: poné la URL del servicio en data-endpoint y en action
+           (por ejemplo Formspree, Google Apps Script o una base propia). Ver README. -->
+      <form class="formulario noche" id="formulario" action="#" method="post" data-endpoint="" aria-labelledby="titulo-formulario">
+        <h3 id="titulo-formulario">Quiero estar en la apertura</h3>
+
+        <div class="campo">
+          <label for="nombre">Nombre <span aria-hidden="true">*</span></label>
+          <input type="text" id="nombre" name="nombre" autocomplete="name" required maxlength="80" enterkeyhint="next" data-error="error-nombre">
+          <p class="error" id="error-nombre"><span role="img" aria-label="Error">✕</span> Escribí tu nombre.</p>
+        </div>
+
+        <div class="campo">
+          <label for="email">Email <span aria-hidden="true">*</span></label>
+          <span class="ayuda" id="ayuda-email">Para avisarte de la apertura. Nada de spam.</span>
+          <input type="email" id="email" name="email" autocomplete="email" required maxlength="120"
+                 autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="next"
+                 aria-describedby="ayuda-email" data-error="error-email">
+          <p class="error" id="error-email"><span role="img" aria-label="Error">✕</span> Escribí un email con el formato nombre@ejemplo.com.</p>
+        </div>
+
+        <div class="campo">
+          <label for="whatsapp">WhatsApp <span class="opcional">(opcional)</span></label>
+          <input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" maxlength="30" enterkeyhint="next">
+        </div>
+
+        <fieldset class="campo opciones">
+          <legend>¿Ya escalaste alguna vez?</legend>
+          <div class="opcion">
+            <input type="radio" id="nivel-nunca" name="nivel" value="nunca">
+            <label for="nivel-nunca">Nunca</label>
+          </div>
+          <div class="opcion">
+            <input type="radio" id="nivel-alguna" name="nivel" value="alguna-vez">
+            <label for="nivel-alguna">Alguna vez</label>
+          </div>
+          <div class="opcion">
+            <input type="radio" id="nivel-seguido" name="nivel" value="seguido">
+            <label for="nivel-seguido">Escalo seguido</label>
+          </div>
+        </fieldset>
+
+        <!-- Trampa para bots: oculta para personas y lectores de pantalla -->
+        <div class="trampa" aria-hidden="true">
+          <label for="sitio-web">No completes este campo</label>
+          <input type="text" id="sitio-web" name="sitio_web" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button type="submit" class="boton boton-ancho">Anotarme</button>
+        <p class="formulario-estado" id="formulario-estado" role="status" aria-live="polite"></p>
+        <p class="formulario-nota">Vista previa: este formulario todavía no guarda datos.</p>
+      </form>
+    </section>
+
+    <!-- ============ PREGUNTAS ============ -->
+    <section class="preguntas dia" id="preguntas" aria-labelledby="titulo-preguntas">
+      <h2 id="titulo-preguntas">Preguntas</h2>
+      <div class="acordeon">
+        <details>
+          <summary>¿Necesito experiencia?</summary>
+          <p>No. Se empieza de cero y siempre hay alguien que te explica lo básico antes de subir.</p>
+        </details>
+        <details>
+          <summary>¿Tengo que estar en forma?</summary>
+          <p>No. La escalada se adapta a tu nivel y la fuerza llega con la práctica. Hay vías para cada momento.</p>
+        </details>
+        <details>
+          <summary>¿Puedo ir sin compañía?</summary>
+          <p>Sí. Mucha gente llega sola y al rato está charlando con el resto del muro. Para eso existe la cordada.</p>
+        </details>
+        <details>
+          <summary>¿Es seguro?</summary>
+          <p>La seguridad va primero. Antes de subir aprendés a moverte y a caer bien, y siempre hay alguien que sabe cerca.</p>
+        </details>
+        <details>
+          <summary>¿Qué tengo que llevar?</summary>
+          <p>Ropa cómoda que te deje mover. El resto de los detalles los contamos antes de abrir.</p>
+        </details>
+        <details>
+          <summary>¿Dónde queda y cuándo abre?</summary>
+          <p>En el Complejo Trebi, en Mar del Plata. La fecha de apertura, los horarios y los precios los anunciamos pronto. Si te anotás, te avisamos primero.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie noche">
+    <img class="pie-logo" src="img/marca/la-roca-vertical-fondo-oscuro.svg" alt="La Roca" width="167" height="158" loading="lazy">
+    <p>Complejo Trebi · Mar del Plata</p>
+    <p>Instagram: muy pronto</p>
+    <p class="pie-creditos">Los videos de esta versión son de muestra, de <a href="https://mixkit.co/" rel="noopener">Mixkit</a> (licencia gratuita), y se van a reemplazar por videos propios del muro.</p>
+  </footer>
+
+  <!-- Visor de escenas -->
+  <dialog class="visor" id="visor" closedby="any" aria-labelledby="visor-titulo">
+    <video class="visor-video" muted loop playsinline controls width="720" height="1280"></video>
+    <div class="visor-pie">
+      <p id="visor-titulo" class="visor-titulo"></p>
+      <form method="dialog">
+        <button type="submit" class="boton boton-chico">Cerrar</button>
+      </form>
+    </div>
+  </dialog>
+</body>
+</html>
