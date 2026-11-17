@@ -6,39 +6,38 @@ Guía corta para usar el logo, los colores y las tipografías de La Roca, el mur
 
 ## La idea
 
-La O de ROCA es una **ronda de cinco presas**, cada una con su forma y su agujero de bulón. Nadie es igual y todas entran en el mismo círculo: eso es La Roca, un lugar para encontrarte con tu gente, despejar la cabeza y ganar fuerza sin contar repeticiones.
+Una roca con techo, alguien escalando colgado de él y el nombre tallado en la piedra. Las letras son de **canto rodado**: gruesas, con las esquinas gastadas y el borde áspero, como las piedras que pule el mar. Los colores son los de un amanecer en la costa: el sol naranja, el mar y la arena.
 
-Las letras no salen de ninguna tipografía: están dibujadas para La Roca, con trazo grueso y puntas redondas, para que el logo se sienta cercano y propio.
+Las letras no salen de ninguna tipografía: están dibujadas para La Roca.
 
 ## Qué archivo usar
 
 | Necesito… | Archivo |
 | --- | --- |
-| El logo en general (web, documentos, fondos claros) | `logo/la-roca-horizontal.svg` |
-| El logo sobre fondo oscuro | `logo/la-roca-horizontal-fondo-oscuro.svg` |
-| El logo sobre fondo naranja | `logo/la-roca-horizontal-fondo-naranja.svg` |
-| Un espacio más cuadrado (posteos, carteles, remeras) | `logo/la-roca-vertical*.svg` (mismas variantes) |
-| Imprimir en un solo color (sellos, grabado, vinilo) | `logo/*-una-tinta-noche.svg`, `*-una-tinta-blanco.svg` o `*-una-tinta-naranja.svg` |
-| Solo el símbolo | `isotipo/ronda.svg` (también en `-noche` y `-blanco`) |
-| El símbolo muy chico (menos de 32 px) | `isotipo/ronda-simple.svg` (sin agujeros) |
-| Foto de perfil de Instagram, WhatsApp, Google | `icono/icono-noche.svg` o `icono/icono-naranja.svg` |
+| El logo (sello) en general | `logo/la-roca.svg` (naranja) |
+| El logo con el amanecer entre el nombre y la bajada | `logo/la-roca-amanecer.svg` |
+| El logo sobre fondo oscuro o naranja | `logo/la-roca-arena.svg` (o `-amanecer-arena`) |
+| El logo en una sola tinta (sello de goma, grabado, bordado) | `logo/la-roca-mar.svg` o `logo/la-roca-blanco.svg` (y sus `-amanecer`) |
+| Un espacio ancho y bajo (encabezado de la web, firma de mail, cartel) | `logo/la-roca-horizontal.svg` y sus variantes `-fondo-oscuro`, `-fondo-naranja`, `-una-tinta-mar`, `-una-tinta-blanco` |
+| Solo el símbolo (la roca con la escaladora, sin letras) | `isotipo/roca.svg` (también `-mar`, `-arena`, `-blanco`) |
+| Foto de perfil de Instagram, WhatsApp, Google | `icono/icono-mar.svg`, `icono/icono-sol.svg` o `icono/icono-arena.svg` |
 | Ícono de la pestaña del navegador | `icono/favicon.svg` |
 | Colores para la web | `colores.css` (variables `--roca-*`) o `colores.json` |
 
 ## Logo
 
-- **Horizontal** es la versión principal. **Vertical** (LA arriba, ROCA abajo) es para formatos cuadrados o angostos.
-- **Color sobre claro:** letras en Noche, ronda en Naranja. **Sobre oscuro:** letras en Magnesio, ronda en Naranja. **Sobre naranja:** letras en Noche, ronda en Magnesio.
-- **Sobre fotos o videos** usá la versión de una tinta en blanco, sobre una zona tranquila de la imagen o con un velo oscuro.
-- **Espacio libre:** alrededor del logo dejá al menos la mitad de la altura de las letras. Si las letras miden 40 px, 20 px libres de cada lado.
-- **Tamaño mínimo:** horizontal, 100 px de ancho en pantalla o 30 mm impreso. Vertical, 60 px o 18 mm. Debajo de eso, usá el isotipo.
+- **El sello** (la roca con LA / ROCA calado) es la versión principal. Es una sola silueta: las letras son huecos en la piedra, así que dejan ver el fondo que tengan detrás.
+- **Horizontal**: el símbolo a la izquierda y el nombre al lado. Para lugares anchos y bajos, como el encabezado de la web.
+- **Sobre fondos claros** usá el naranja. **Sobre el mar, el atardecer o fondos oscuros**, la roca en arena. **Sobre fotos**, la versión blanca en una zona tranquila de la imagen.
+- **Espacio libre:** alrededor del logo dejá al menos la altura de la palabra "LA".
+- **Tamaño mínimo:** el sello, 90 px de ancho en pantalla o 25 mm impreso; la horizontal, 140 px o 35 mm. Más chico, usá el isotipo.
 
 **No hagas esto:**
 
-- Estirar, aplastar, inclinar o rotar el logo o la ronda.
+- Estirar, aplastar o rotar el logo.
 - Reescribir "La Roca" con una tipografía en lugar de usar el archivo.
-- Pintar las presas de colores distintos entre sí o usar colores fuera de la paleta.
-- Poner la versión a color sobre una foto con mucho detalle.
+- Separar la escaladora de la roca o moverla de lugar.
+- Pintar la roca con colores fuera de la paleta o con degradés.
 - Agregarle sombras, contornos o efectos.
 
 ## Colores
@@ -47,47 +46,44 @@ Las letras no salen de ninguna tipografía: están dibujadas para La Roca, con t
 
 | Color | HEX | Para qué |
 | --- | --- | --- |
-| Naranja Ronda | `#FF5A1F` | El color de la marca. La ronda, fondos de impacto, botones. |
-| Naranja tostado | `#C4400F` | Naranja para texto chico y enlaces sobre fondos claros. |
-| Noche atlántica | `#0D1B26` | Letras del logo, texto y fondos oscuros. |
-| Magnesio | `#F1F3F0` | Fondo claro principal. |
-| Durazno | `#FFB089` | Acento suave, fondos de tarjetas. |
-| Lila | `#B49CFF` | Acento secundario. |
-| Menta | `#8EE0C3` | Acento secundario. |
-
-El naranja manda; Noche y Magnesio ordenan. Durazno, Lila y Menta son los colores de las presas: acentos, no protagonistas.
+| Sol | `#FF7A2F` | El color de la marca. El logo, fondos de impacto, botones grandes. |
+| Atardecer | `#E8461E` | Segundo naranja, para acentos y fondos. |
+| Mar | `#1E4F7A` | Azul de la marca. Texto sobre fondos claros, fondos. |
+| Hondo | `#102A40` | Texto sobre naranja y fondos oscuros. |
+| Arena | `#F3E3CF` | Fondo claro principal. El logo sobre fondos oscuros. |
+| Óxido | `#B03A10` | Naranja para texto chico y enlaces sobre fondos claros. |
 
 **Para que se lea bien:**
 
-- Texto sobre naranja: siempre en **Noche** (contraste 5,6:1). El blanco o el magnesio sobre naranja solo sirven para títulos muy grandes.
-- Naranja sobre fondo claro: para texto chico o enlaces usá **Naranja tostado** (4,6:1 sobre Magnesio). El Naranja Ronda queda para formas, botones grandes y la ronda.
-- Naranja sobre Noche funciona para texto (5,6:1).
-- Texto en Noche sobre Durazno, Lila o Menta se lee bien (más de 7:1).
+- Texto sobre Sol: en **Hondo** (contraste 5,7:1). El Mar sobre Sol (3,3:1) y la Arena sobre Sol (2,1:1) solo sirven para títulos muy grandes.
+- Texto sobre Arena: en **Mar** (6,8:1) o **Hondo** (11,7:1).
+- Naranja para texto chico o enlaces sobre fondo claro: **Óxido** (4,8:1 sobre Arena). El Sol queda para formas, el logo y botones grandes.
+- Texto sobre Mar u Hondo: en **Arena**.
 
 ## Tipografías
 
 ![Tipografías](tipografia.svg)
 
-- **Títulos: [Unbounded](https://fonts.google.com/specimen/Unbounded)**, pesos 500 y 700.
-- **Texto: [Instrument Sans](https://fonts.google.com/specimen/Instrument+Sans)**, pesos 400 a 600.
+- **Títulos: [DM Serif Display](https://fonts.google.com/specimen/DM+Serif+Display)**, con la cursiva para destacar una palabra.
+- **Texto: [DM Sans](https://fonts.google.com/specimen/DM+Sans)**, pesos 400 a 600.
 
-Las dos son gratuitas (Google Fonts, licencia OFL) y son las mismas que usa la web. Para cargarlas en una página:
+Las dos son gratuitas (Google Fonts, licencia OFL). Para cargarlas en una página:
 
 ```html
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Unbounded:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display:ital@0;1&display=swap">
 ```
 
-`tipografia.svg` y `paleta.svg` cargan las fuentes desde Google Fonts: abiertas en el navegador se ven con las tipografías reales; en otros programas puede aparecer una tipografía de reemplazo. Los archivos del logo no dependen de ninguna fuente.
+`tipografia.svg` y `paleta.svg` cargan las fuentes desde Google Fonts: abiertas en el navegador se ven con las tipografías reales; en otros programas puede aparecer una de reemplazo. Los archivos del logo no dependen de ninguna fuente.
 
 ## Cómo suena La Roca
 
 - Cercana y en voseo: "vení", "animate", "tu gente".
 - Habla de lo que la escalada te da por dentro (calma, confianza, comunidad) antes que del rendimiento.
-- Invita, no exige: siempre está permitido caerse.
+- Invita, no exige: caerse es parte.
 
 ## Cambiar o regenerar los archivos
 
-Todo sale de `fuente/generar.mjs` (letras, ronda, variantes, colores y estas hojas). Para regenerar:
+Todo sale de `fuente/generar.mjs` (letras, roca, escaladora, variantes, colores y estas hojas). Para regenerar:
 
 ```bash
 node brand/fuente/generar.mjs

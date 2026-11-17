@@ -1,72 +1,62 @@
 {
-  "naranja": {
-    "nombre": "Naranja Ronda",
-    "hex": "#FF5A1F",
-    "uso": "Color principal. La ronda, fondos de impacto, botones.",
+  "sol": {
+    "nombre": "Sol",
+    "hex": "#FF7A2F",
+    "uso": "Color principal. El logo, fondos de impacto, botones grandes.",
     "rgb": [
       255,
-      90,
-      31
+      122,
+      47
     ]
   },
-  "tostado": {
-    "nombre": "Naranja tostado",
-    "hex": "#C4400F",
+  "atardecer": {
+    "nombre": "Atardecer",
+    "hex": "#E8461E",
+    "uso": "Segundo naranja, para acentos y fondos.",
+    "rgb": [
+      232,
+      70,
+      30
+    ]
+  },
+  "mar": {
+    "nombre": "Mar",
+    "hex": "#1E4F7A",
+    "uso": "Azul de la marca. Texto sobre fondos claros, fondos.",
+    "rgb": [
+      30,
+      79,
+      122
+    ]
+  },
+  "hondo": {
+    "nombre": "Hondo",
+    "hex": "#102A40",
+    "uso": "Texto sobre naranja y fondos oscuros.",
+    "rgb": [
+      16,
+      42,
+      64
+    ]
+  },
+  "arena": {
+    "nombre": "Arena",
+    "hex": "#F3E3CF",
+    "uso": "Fondo claro principal. El logo sobre fondos oscuros.",
+    "rgb": [
+      243,
+      227,
+      207
+    ]
+  },
+  "oxido": {
+    "nombre": "Óxido",
+    "hex": "#B03A10",
     "uso": "Naranja para texto chico y enlaces sobre fondos claros.",
     "rgb": [
-      196,
-      64,
-      15
-    ]
-  },
-  "noche": {
-    "nombre": "Noche atlántica",
-    "hex": "#0D1B26",
-    "uso": "Letras del logo, texto y fondos oscuros.",
-    "rgb": [
-      13,
-      27,
-      38
-    ]
-  },
-  "magnesio": {
-    "nombre": "Magnesio",
-    "hex": "#F1F3F0",
-    "uso": "Fondo claro principal.",
-    "rgb": [
-      241,
-      243,
-      240
-    ]
-  },
-  "durazno": {
-    "nombre": "Durazno",
-    "hex": "#FFB089",
-    "uso": "Acento suave, fondos de tarjetas.",
-    "rgb": [
-      255,
       176,
-      137
-    ]
-  },
-  "lila": {
-    "nombre": "Lila",
-    "hex": "#B49CFF",
-    "uso": "Acento secundario.",
-    "rgb": [
-      180,
-      156,
-      255
-    ]
-  },
-  "menta": {
-    "nombre": "Menta",
-    "hex": "#8EE0C3",
-    "uso": "Acento secundario.",
-    "rgb": [
-      142,
-      224,
-      195
+      58,
+      16
     ]
   }
 }
