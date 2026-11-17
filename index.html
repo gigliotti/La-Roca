@@ -7,7 +7,7 @@
   <title>La Roca · Muro de escalada en Mar del Plata</title>
   <meta name="description" content="La Roca es un muro de escalada en el Complejo Trebi, Mar del Plata. Escalar para despejar la cabeza, encontrarte con tu gente y ganar fuerza. Abrimos pronto: anotate para la apertura.">
   <link rel="canonical" href="https://murolaroca.com.ar/">
-  <meta name="theme-color" content="#0d1b26">
+  <meta name="theme-color" content="#102a40">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_AR">
@@ -16,12 +16,12 @@
   <meta property="og:description" content="Arriba, la cabeza se calla. Un muro de escalada en el Complejo Trebi para despejarte, encontrarte con tu gente y ganar fuerza.">
   <meta property="og:url" content="https://murolaroca.com.ar/">
 
-  <link rel="icon" href="img/presa.svg" type="image/svg+xml">
+  <link rel="icon" href="img/marca/favicon.svg" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://assets.mixkit.co">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Permanent+Marker&family=Unbounded:wght@400..900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display:ital@0;1&family=Permanent+Marker&display=swap">
   <link rel="stylesheet" href="css/estilos.css">
   <script type="module" src="js/sitio.js"></script>
 </head>
@@ -29,9 +29,8 @@
   <a class="saltar" href="#contenido">Saltar al contenido</a>
 
   <header class="cabecera">
-    <a class="marca" href="#arriba" aria-label="La Roca, volver al inicio">
-      <svg class="marca-presa" viewBox="0 0 100 100" aria-hidden="true"><path fill-rule="evenodd" d="M17 60C8 41 21 17 45 13c19-3 38 7 44 25 5 17-4 35-22 43-17 7-41 2-50-21Zm33-7a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/></svg>
-      <span>La Roca</span>
+    <a class="marca" href="#arriba">
+      <img src="img/marca/la-roca-horizontal-fondo-oscuro.svg" alt="La Roca, volver al inicio" width="416" height="106">
     </a>
     <nav class="navegacion" aria-label="Secciones">
       <ul>
@@ -51,31 +50,30 @@
 
   <main id="contenido">
     <!-- ============ PORTADA ============
-         La placa de "magnesio" deja ver el video a través de las letras.
-         Al bajar, la placa se abre desde la presa y entrás al video. -->
+         Fondo de arena con el logo oficial como ventana: el video se ve dentro
+         de la roca y la escaladora. Al bajar, la ventana se abre desde la
+         escaladora y entrás al video. -->
     <section class="portada" id="arriba" aria-labelledby="titulo-portada">
       <div class="portada-fija">
-        <!-- VIDEO DE MUESTRA · Mixkit #50925 · reemplazar por video propio -->
-        <video class="portada-video" data-ambiente autoplay muted loop playsinline preload="auto"
-               width="1280" height="720" aria-hidden="true"
-               poster="https://assets.mixkit.co/videos/50925/50925-thumb-720-0.jpg">
-          <source src="https://assets.mixkit.co/videos/50925/50925-360.mp4" type="video/mp4" media="(max-width: 47.99em)">
-          <source src="https://assets.mixkit.co/videos/50925/50925-720.mp4" type="video/mp4">
-        </video>
-
-        <div class="placa" aria-hidden="true">
-          <p class="placa-nombre"><span>La</span> <span>Roca<svg class="placa-presa" viewBox="0 0 100 100"><path fill-rule="evenodd" d="M17 60C8 41 21 17 45 13c19-3 38 7 44 25 5 17-4 35-22 43-17 7-41 2-50-21Zm33-7a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/></svg></span></p>
+        <div class="ventana" aria-hidden="true">
+          <!-- VIDEO DE MUESTRA · Mixkit #50925 · reemplazar por video propio -->
+          <video class="portada-video" data-ambiente autoplay muted loop playsinline preload="auto"
+                 width="1280" height="720"
+                 poster="https://assets.mixkit.co/videos/50925/50925-thumb-720-0.jpg">
+            <source src="https://assets.mixkit.co/videos/50925/50925-360.mp4" type="video/mp4" media="(max-width: 47.99em)">
+            <source src="https://assets.mixkit.co/videos/50925/50925-720.mp4" type="video/mp4">
+          </video>
         </div>
 
         <div class="placa-datos">
-          <p>Muro de escalada</p>
           <p>Complejo Trebi · Mar del Plata</p>
+          <p>Abrimos pronto</p>
         </div>
         <p class="placa-pista" aria-hidden="true">Bajá para entrar</p>
 
         <div class="portada-texto">
-          <p class="antetitulo">Abrimos pronto en Mar del Plata</p>
-          <h1 id="titulo-portada">Arriba, la cabeza se calla.</h1>
+          <p class="antetitulo">La Roca · Muro de escalada en Mar del Plata</p>
+          <h1 id="titulo-portada">Arriba, la cabeza <em>se calla</em>.</h1>
           <p class="portada-bajada">La Roca es un muro de escalada en el Complejo Trebi para despejar la cabeza, encontrarte con tu gente y ganar fuerza sin contar repeticiones.</p>
           <a class="boton" href="#cordada">Anotate para la apertura</a>
         </div>
@@ -92,7 +90,7 @@
     <!-- ============ LO QUE TE DA ============ -->
     <section class="que-te-da noche" id="que-te-da" aria-labelledby="titulo-que-te-da">
       <header class="seccion-cabeza">
-        <h2 id="titulo-que-te-da">Lo que te da escalar</h2>
+        <h2 id="titulo-que-te-da">Lo que te da <em>escalar</em></h2>
         <p>Ordenado por lo que más nos importa.</p>
       </header>
 
@@ -109,7 +107,7 @@
           <span class="muestra">Video de muestra</span>
         </div>
         <div class="capitulo-texto">
-          <p class="capitulo-orden"><span class="cinta cinta-lila">Primero</span> la cabeza</p>
+          <p class="capitulo-orden"><span class="cinta cinta-sol">Primero</span> la cabeza</p>
           <h3 id="cap-cabeza">Una hora sin pensar en otra cosa.</h3>
           <p>En la pared no hay notificaciones: hay una presa, la siguiente y tu respiración. Escalar te pide estar presente, leer el problema y animarte a soltar el miedo de a poco. Esa calma se queda con vos cuando bajás.</p>
           <ul class="lista-presas">
@@ -133,7 +131,7 @@
           <span class="muestra">Video de muestra</span>
         </div>
         <div class="capitulo-texto">
-          <p class="capitulo-orden"><span class="cinta cinta-durazno">Después</span> la gente</p>
+          <p class="capitulo-orden"><span class="cinta cinta-arena">Después</span> la gente</p>
           <h3 id="cap-gente">Escalás vos. Te alienta todo el muro.</h3>
           <p>Escalar es mucho más social de lo que parece. Alguien te pasa la secuencia, otro te grita «¡dale!» desde abajo y, cuando llegás, festejan personas que hace un rato no conocías. A la tercera semana ya son tu grupo.</p>
           <ul class="lista-presas">
@@ -157,7 +155,7 @@
           <span class="muestra">Video de muestra</span>
         </div>
         <div class="capitulo-texto">
-          <p class="capitulo-orden"><span class="cinta cinta-menta">Y también</span> el cuerpo</p>
+          <p class="capitulo-orden"><span class="cinta cinta-mar">Y también</span> el cuerpo</p>
           <h3 id="cap-cuerpo">Fuerza que se entrena jugando.</h3>
           <p>Espalda, brazos, abdomen, piernas y manos trabajan en el mismo movimiento. No contás repeticiones: resolvés problemas. Te vas con el cuerpo cansado y la cabeza liviana.</p>
           <ul class="lista-presas">
@@ -194,7 +192,7 @@
                      poster="https://assets.mixkit.co/videos/41035/41035-thumb-360-0.jpg">
                 <source src="https://assets.mixkit.co/videos/41035/41035-360.mp4" type="video/mp4">
               </video>
-              <span class="cinta cinta-lila" aria-hidden="true">Ritual</span>
+              <span class="cinta cinta-sol" aria-hidden="true">Ritual</span>
               <span class="escena-texto">El magnesio antes de subir</span>
             </button>
           </li>
@@ -204,7 +202,7 @@
                      poster="https://assets.mixkit.co/videos/50913/50913-thumb-360-0.jpg">
                 <source src="https://assets.mixkit.co/videos/50913/50913-360.mp4" type="video/mp4">
               </video>
-              <span class="cinta cinta-durazno" aria-hidden="true">Foco</span>
+              <span class="cinta cinta-arena" aria-hidden="true">Foco</span>
               <span class="escena-texto">Leer la vía, una presa por vez</span>
             </button>
           </li>
@@ -214,7 +212,7 @@
                      poster="https://assets.mixkit.co/videos/41036/41036-thumb-360-0.jpg">
                 <source src="https://assets.mixkit.co/videos/41036/41036-360.mp4" type="video/mp4">
               </video>
-              <span class="cinta cinta-menta" aria-hidden="true">De a dos</span>
+              <span class="cinta cinta-mar" aria-hidden="true">De a dos</span>
               <span class="escena-texto">Subir al lado de alguien</span>
             </button>
           </li>
@@ -224,7 +222,7 @@
                      poster="https://assets.mixkit.co/videos/50911/50911-thumb-360-0.jpg">
                 <source src="https://assets.mixkit.co/videos/50911/50911-360.mp4" type="video/mp4">
               </video>
-              <span class="cinta cinta-lila" aria-hidden="true">Mirada</span>
+              <span class="cinta cinta-sol" aria-hidden="true">Mirada</span>
               <span class="escena-texto">Alguien que te mira y te corrige</span>
             </button>
           </li>
@@ -234,7 +232,7 @@
                      poster="https://assets.mixkit.co/videos/50928/50928-thumb-360-0.jpg">
                 <source src="https://assets.mixkit.co/videos/50928/50928-360.mp4" type="video/mp4">
               </video>
-              <span class="cinta cinta-durazno" aria-hidden="true">Beta</span>
+              <span class="cinta cinta-arena" aria-hidden="true">Beta</span>
               <span class="escena-texto">Pasarse la secuencia</span>
             </button>
           </li>
@@ -244,7 +242,7 @@
                      poster="https://assets.mixkit.co/videos/50920/50920-thumb-360-0.jpg">
                 <source src="https://assets.mixkit.co/videos/50920/50920-360.mp4" type="video/mp4">
               </video>
-              <span class="cinta cinta-menta" aria-hidden="true">Arriba</span>
+              <span class="cinta cinta-mar" aria-hidden="true">Arriba</span>
               <span class="escena-texto">La primera vez que llegás</span>
             </button>
           </li>
@@ -254,7 +252,7 @@
                      poster="https://assets.mixkit.co/videos/50924/50924-thumb-360-0.jpg">
                 <source src="https://assets.mixkit.co/videos/50924/50924-360.mp4" type="video/mp4">
               </video>
-              <span class="cinta cinta-lila" aria-hidden="true">Después</span>
+              <span class="cinta cinta-sol" aria-hidden="true">Después</span>
               <span class="escena-texto">Esa cara de «lo hice»</span>
             </button>
           </li>
@@ -266,7 +264,7 @@
     <!-- ============ PRIMERA VEZ ============ -->
     <section class="primera-vez dia" id="primera-vez" aria-labelledby="titulo-primera-vez">
       <header class="seccion-cabeza">
-        <h2 id="titulo-primera-vez">Tu primera vez</h2>
+        <h2 id="titulo-primera-vez">Tu primera <em>vez</em></h2>
         <p>No hace falta experiencia ni estar en forma. Todo el mundo empezó de cero.</p>
       </header>
       <ol class="via">
@@ -300,7 +298,7 @@
           <source src="https://assets.mixkit.co/videos/50926/50926-360.mp4" type="video/mp4" media="(max-width: 47.99em)">
           <source src="https://assets.mixkit.co/videos/50926/50926-720.mp4" type="video/mp4">
         </video>
-        <span class="cinta cinta-durazno bruno-pendiente">Acá va el video de Bruno</span>
+        <span class="cinta cinta-arena bruno-pendiente">Acá va el video de Bruno</span>
       </div>
       <div class="bruno-texto">
         <p class="antetitulo">Quién te guía</p>
@@ -328,7 +326,7 @@
     <section class="cordada dia" id="cordada" aria-labelledby="titulo-cordada">
       <div class="cordada-texto">
         <p class="antetitulo">Comunidad</p>
-        <h2 id="titulo-cordada">Sumate a la primera cordada</h2>
+        <h2 id="titulo-cordada">Sumate a la primera <em>cordada</em></h2>
         <p>Una cordada es el grupo que escala junto y se cuida. Estamos armando la primera de La Roca: la gente que va a estrenar el muro. Dejanos tus datos y te avisamos antes que a nadie cuándo abrimos.</p>
         <h3 class="cordada-subtitulo">Lo que se viene</h3>
         <ul class="lista-presas">
@@ -425,11 +423,8 @@
   </main>
 
   <footer class="pie noche">
-    <div class="pie-marca">
-      <svg class="marca-presa" viewBox="0 0 100 100" aria-hidden="true"><path fill-rule="evenodd" d="M17 60C8 41 21 17 45 13c19-3 38 7 44 25 5 17-4 35-22 43-17 7-41 2-50-21Zm33-7a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/></svg>
-      <p>La Roca</p>
-    </div>
-    <p>Muro de escalada · Complejo Trebi · Mar del Plata</p>
+    <div class="pie-logo" role="img" aria-label="La Roca, muro de escalada"></div>
+    <p>Complejo Trebi · Mar del Plata</p>
     <p>Instagram: muy pronto</p>
     <p class="pie-creditos">Los videos de esta versión son de muestra, de <a href="https://mixkit.co/" rel="noopener">Mixkit</a> (licencia gratuita), y se van a reemplazar por videos propios del muro.</p>
   </footer>

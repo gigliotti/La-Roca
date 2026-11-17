@@ -21,24 +21,32 @@ Después abrí http://localhost:4321. No hace falta instalar nada.
 
 ```
 index.html          Toda la página
-css/estilos.css     Estilos (tokens de color y tipografía arriba de todo)
-js/sitio.js         Videos, portada, escenas, visor y formulario
-img/presa.svg       La presa: ícono, viñetas y marca
+css/estilos.css     Estilos (colores y tipografías de marca arriba de todo)
+js/sitio.js         Videos, manifiesto, escenas, visor y formulario
+img/marca/          Logo, logo horizontal y favicon (copiados de brand/)
+img/presa*.svg      La presa naranja de las viñetas y los pasos
 scripts/servidor.mjs  Servidor local mínimo
 vercel.json         Encabezados de seguridad y caché para Vercel
 ```
 
 ## La idea de diseño
 
-- **La placa de magnesio.** La portada es una placa blanca (oscura si el teléfono está en modo oscuro)
-  con "La Roca" calado: el video se ve solo a través de las letras. El punto final es una presa.
-  Al bajar, la placa se abre desde el agujero de la presa y entrás al video.
+El sitio usa la marca **"Canto rodado"** (la roca con techo, la escaladora colgada y LA ROCA tallado).
+La guía completa y los archivos originales están en la carpeta `brand/` de la rama `marca`.
+
+- **El logo como ventana.** La portada es un fondo de arena (azul hondo si el teléfono está en modo oscuro)
+  con el logo oficial: el video se ve solo dentro de la roca y la escaladora, y las letras talladas quedan del color del fondo.
+  Al bajar, la ventana se abre desde la escaladora y entrás al video. No se reescribe "La Roca" con ninguna tipografía:
+  siempre se usa el archivo del logo.
 - **La grilla de agujeros.** Las secciones claras tienen de fondo la grilla de agujeros de un panel de muro.
 - **La cinta de marcar vías.** Las etiquetas imitan la cinta que se pega al lado de las presas, escrita con fibrón.
-- **Paleta:** el Atlántico de noche (`#0d1b26`), el magnesio (`#f1f3f0`) y colores de presas:
-  lila (`#b49cff`), durazno (`#ffb089`) y menta (`#8ee0c3`).
-- **Tipografías (Google Fonts):** Unbounded para títulos, Instrument Sans para texto
-  y Permanent Marker solo para las cintas.
+- **Paleta de marca:** Sol `#FF7A2F`, Atardecer `#E8461E`, Mar `#1E4F7A`, Hondo `#102A40`, Arena `#F3E3CF`
+  y Óxido `#B03A10`. Texto sobre Sol, siempre en Hondo; el naranja para texto chico sobre arena es Óxido.
+- **Tipografías (Google Fonts):** DM Serif Display para títulos (con la cursiva para destacar una palabra),
+  DM Sans para texto y Permanent Marker solo para las cintas.
+
+Los archivos de marca que usa la web están copiados en `img/marca/` (logo, horizontal para la cabecera y favicon).
+Si la marca cambia, hay que volver a copiarlos desde `brand/`.
 
 Usa funciones modernas del navegador con alternativas para los que no las tienen:
 animaciones atadas al scroll (la portada y el manifiesto), transiciones de vista al abrir una escena,
@@ -54,7 +62,7 @@ Cada uno tiene la etiqueta "Video de muestra" en pantalla y un comentario en `in
 
 | Lugar | Video de muestra | Qué filmar para reemplazarlo |
 | --- | --- | --- |
-| Portada | Mixkit 50925 | Plano general del muro con alguien escalando. Horizontal, que se lea bien a través de letras grandes (mucho contraste y color). |
+| Portada | Mixkit 50925 | Plano general del muro con alguien escalando. Horizontal, con la acción en el centro, porque al principio se ve solo dentro de la roca del logo. |
 | Lo que te da · la cabeza | Mixkit 41029 | Primer plano lento: manos buscando una presa, respiración, mirada concentrada. |
 | Lo que te da · la gente | Mixkit 41023 | Grupo charlando abajo del muro, alguien explicando una secuencia, risas. |
 | Lo que te da · el cuerpo | Mixkit 50914 | Un movimiento de fuerza completo: espalda, piernas, llegada arriba. |

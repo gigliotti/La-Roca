@@ -71,31 +71,6 @@ if (botonVideos) {
 movimientoReducido.addEventListener('change', sincronizarVideos);
 sincronizarVideos();
 
-/* ---------- Portada: el hueco se abre desde la presa ----------
-   Calcula el centro del agujero del bulón de la presa, en
-   coordenadas de la placa, para que la animación nazca ahí. */
-
-const placa = document.querySelector('.placa');
-const presa = document.querySelector('.placa-presa');
-
-const medirPresa = () => {
-  if (!placa || !presa) return;
-  const caja = placa.getBoundingClientRect();
-  const r = presa.getBoundingClientRect();
-  if (!caja.width || !caja.height) return;
-  // La placa puede estar escalada por la animación: se corrige la escala.
-  const escala = caja.width / placa.offsetWidth;
-  const x = (r.left + r.width * 0.5 - caja.left) / escala;
-  const y = (r.top + r.height * 0.47 - caja.top) / escala;
-  placa.style.setProperty('--ox', `${x.toFixed(1)}px`);
-  placa.style.setProperty('--oy', `${y.toFixed(1)}px`);
-};
-
-if (placa && presa) {
-  document.fonts?.ready.then(medirPresa);
-  new ResizeObserver(medirPresa).observe(placa);
-}
-
 /* ---------- Manifiesto: las palabras se encienden al bajar ---------- */
 
 const manifiesto = document.querySelector('[data-palabras]');
