@@ -1,0 +1,12 @@
+/* La Roca · colores y tipografías de marca (generado por brand/fuente/generar.mjs) */
+:root {
+  --roca-sol: #ff7a2f; /* Sol. Color principal. El arco del símbolo, fondos de impacto, botones grandes. */
+  --roca-atardecer: #e8461e; /* Atardecer. Segundo naranja, para acentos y fondos. */
+  --roca-mar: #1e4f7a; /* Mar. Azul de la marca. Las letras del logo, texto sobre fondos claros. */
+  --roca-hondo: #102a40; /* Hondo. Texto sobre naranja y fondos oscuros. */
+  --roca-arena: #f3e3cf; /* Arena. Fondo claro principal. Letras del logo sobre fondos oscuros. */
+  --roca-oxido: #b03a10; /* Óxido. Naranja para texto chico y enlaces sobre fondos claros. */
+
+  --roca-fuente-titulos: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --roca-fuente-texto: "DM Sans", "Segoe UI", system-ui, sans-serif;
+}
