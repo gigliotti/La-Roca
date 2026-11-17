@@ -2,7 +2,7 @@
   "sol": {
     "nombre": "Sol",
     "hex": "#FF7A2F",
-    "uso": "Color principal. El logo, fondos de impacto, botones grandes.",
+    "uso": "Color principal. El arco del símbolo, fondos de impacto, botones grandes.",
     "rgb": [
       255,
       122,
@@ -22,7 +22,7 @@
   "mar": {
     "nombre": "Mar",
     "hex": "#1E4F7A",
-    "uso": "Azul de la marca. Texto sobre fondos claros, fondos.",
+    "uso": "Azul de la marca. Las letras del logo, texto sobre fondos claros.",
     "rgb": [
       30,
       79,
@@ -42,7 +42,7 @@
   "arena": {
     "nombre": "Arena",
     "hex": "#F3E3CF",
-    "uso": "Fondo claro principal. El logo sobre fondos oscuros.",
+    "uso": "Fondo claro principal. Letras del logo sobre fondos oscuros.",
     "rgb": [
       243,
       227,
