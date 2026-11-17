@@ -30,7 +30,7 @@
 
   <header class="cabecera">
     <a class="marca" href="#arriba">
-      <img src="img/marca/la-roca-horizontal-fondo-oscuro.svg" alt="La Roca, volver al inicio" width="416" height="106">
+      <img src="img/marca/la-roca-horizontal-fondo-oscuro.svg" alt="La Roca, volver al inicio" width="357" height="104">
     </a>
     <nav class="navegacion" aria-label="Secciones">
       <ul>
@@ -50,25 +50,29 @@
 
   <main id="contenido">
     <!-- ============ PORTADA ============
-         Fondo de arena con el logo oficial como ventana: el video se ve dentro
-         de la roca y la escaladora. Al bajar, la ventana se abre desde la
-         escaladora y entrás al video. -->
+         Fondo de arena con el logo y un arco grande, con la forma del arco del
+         símbolo, que hace de ventana al video. Al bajar, el arco se agranda
+         hasta llenar la pantalla y entrás al video. -->
     <section class="portada" id="arriba" aria-labelledby="titulo-portada">
       <div class="portada-fija">
-        <div class="ventana" aria-hidden="true">
-          <!-- VIDEO DE MUESTRA · Mixkit #50925 · reemplazar por video propio -->
-          <video class="portada-video" data-ambiente autoplay muted loop playsinline preload="auto"
-                 width="1280" height="720"
-                 poster="https://assets.mixkit.co/videos/50925/50925-thumb-720-0.jpg">
-            <source src="https://assets.mixkit.co/videos/50925/50925-360.mp4" type="video/mp4" media="(max-width: 47.99em)">
-            <source src="https://assets.mixkit.co/videos/50925/50925-720.mp4" type="video/mp4">
-          </video>
-        </div>
+        <!-- VIDEO DE MUESTRA · Mixkit #50925 · reemplazar por video propio -->
+        <video class="portada-video" data-ambiente autoplay muted loop playsinline preload="auto"
+               width="1280" height="720" aria-hidden="true"
+               poster="https://assets.mixkit.co/videos/50925/50925-thumb-720-0.jpg">
+          <source src="https://assets.mixkit.co/videos/50925/50925-360.mp4" type="video/mp4" media="(max-width: 47.99em)">
+          <source src="https://assets.mixkit.co/videos/50925/50925-720.mp4" type="video/mp4">
+        </video>
 
         <div class="placa-datos">
           <p>Complejo Trebi · Mar del Plata</p>
           <p>Abrimos pronto</p>
         </div>
+
+        <picture class="portada-logo">
+          <source srcset="img/marca/la-roca-horizontal-fondo-oscuro.svg" media="(prefers-color-scheme: dark)">
+          <img src="img/marca/la-roca-horizontal.svg" alt="La Roca" width="357" height="104">
+        </picture>
+        <div class="arco" aria-hidden="true"></div>
         <p class="placa-pista" aria-hidden="true">Bajá para entrar</p>
 
         <div class="portada-texto">
@@ -423,7 +427,7 @@
   </main>
 
   <footer class="pie noche">
-    <div class="pie-logo" role="img" aria-label="La Roca, muro de escalada"></div>
+    <img class="pie-logo" src="img/marca/la-roca-vertical-fondo-oscuro.svg" alt="La Roca" width="167" height="158" loading="lazy">
     <p>Complejo Trebi · Mar del Plata</p>
     <p>Instagram: muy pronto</p>
     <p class="pie-creditos">Los videos de esta versión son de muestra, de <a href="https://mixkit.co/" rel="noopener">Mixkit</a> (licencia gratuita), y se van a reemplazar por videos propios del muro.</p>
