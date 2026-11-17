@@ -1,0 +1,13 @@
+/* La Roca · colores y tipografías de marca (generado por brand/fuente/generar.mjs) */
+:root {
+  --roca-naranja: #ff5a1f; /* Naranja Ronda. Color principal. La ronda, fondos de impacto, botones. */
+  --roca-tostado: #c4400f; /* Naranja tostado. Naranja para texto chico y enlaces sobre fondos claros. */
+  --roca-noche: #0d1b26; /* Noche atlántica. Letras del logo, texto y fondos oscuros. */
+  --roca-magnesio: #f1f3f0; /* Magnesio. Fondo claro principal. */
+  --roca-durazno: #ffb089; /* Durazno. Acento suave, fondos de tarjetas. */
+  --roca-lila: #b49cff; /* Lila. Acento secundario. */
+  --roca-menta: #8ee0c3; /* Menta. Acento secundario. */
+
+  --roca-fuente-titulos: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --roca-fuente-texto: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+}
