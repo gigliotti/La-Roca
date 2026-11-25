@@ -346,6 +346,28 @@ body {
   }
 }
 
+/* Entrar a tu vía (perfil con los hitos). En celulares angostos no entra
+   en la cabecera: queda el enlace de la portada y el del pie. */
+.enlace-entrar {
+  display: none;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  color: var(--roca-arena);
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    background: rgb(243 227 207 / 0.08);
+  }
+
+  @media (min-width: 30em) {
+    display: inline-flex;
+  }
+}
+
 .boton-videos {
   display: inline-flex;
   align-items: center;
@@ -499,6 +521,15 @@ body {
   & h1 {
     font-size: clamp(2.8rem, 1.5rem + 5vw, 6.25rem);
     line-height: 0.98;
+  }
+}
+
+.portada-entrar {
+  margin: 1.1rem 0 0;
+  font-size: 0.95rem;
+
+  & a {
+    font-weight: 600;
   }
 }
 

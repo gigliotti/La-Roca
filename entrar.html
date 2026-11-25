@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="noindex">
+  <title>Entrar · La Roca</title>
+  <meta name="description" content="Entrá a tu vía en La Roca: los logros que vas sumando en cada clase.">
+  <meta name="theme-color" content="#102a40">
+  <link rel="icon" href="img/marca/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display:ital@0;1&family=Permanent+Marker&display=swap">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="js/vendor/supabase-2.119.0.js" defer></script>
+  <script type="module" src="js/app/entrar.js"></script>
+</head>
+<body class="app">
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera cabecera-app">
+    <a class="marca" href="./">
+      <img src="img/marca/la-roca-horizontal-fondo-oscuro.svg" alt="La Roca, ir al sitio" width="357" height="104">
+    </a>
+  </header>
+
+  <main id="contenido" class="app-main dia entrar">
+    <p class="aviso-demo" id="aviso-demo" hidden>
+      <strong>Modo demo.</strong> Los datos quedan solo en este navegador.
+      <button type="button" class="boton-texto" data-accion="reiniciar-demo">Empezar de cero</button>
+    </p>
+
+    <section class="entrar-tarjeta noche" aria-labelledby="titulo-entrar">
+      <p class="antetitulo">Tu vía en La Roca</p>
+      <h1 id="titulo-entrar">Cada clase, <em>un paso más</em>.</h1>
+      <p class="entrar-bajada">Entrá para ver los logros que vas sumando en el muro y compartirlos.</p>
+
+      <form class="formulario-app" id="paso-mail" novalidate>
+        <div class="campo">
+          <label for="email">Tu mail</label>
+          <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required>
+          <p class="error">Escribí un mail válido, por ejemplo nombre@gmail.com.</p>
+        </div>
+        <button type="submit" class="boton boton-ancho">Mandame el código</button>
+        <p class="ayuda">Te llega un código de 6 números. No hace falta contraseña.</p>
+      </form>
+
+      <form class="formulario-app" id="paso-codigo" novalidate hidden>
+        <p class="entrar-enviado">Te mandamos un código a <strong id="email-enviado"></strong>. Si no lo ves, buscá en spam.</p>
+        <div class="campo">
+          <label for="codigo">Código</label>
+          <input type="text" id="codigo" name="codigo" class="campo-codigo" inputmode="numeric" autocomplete="one-time-code"
+                 pattern="[0-9]{6}" maxlength="6" required>
+          <p class="error">Son 6 números.</p>
+        </div>
+        <button type="submit" class="boton boton-ancho">Entrar</button>
+        <div class="entrar-otras">
+          <button type="button" class="boton-texto" id="reenviar">Reenviar código</button>
+          <button type="button" class="boton-texto" id="cambiar-mail">Usar otro mail</button>
+        </div>
+      </form>
+
+      <p class="formulario-estado" id="estado" role="status" aria-live="polite"></p>
+
+      <div class="demo-atajos" id="demo-atajos" hidden>
+        <p>En la demo sirve cualquier código de 6 números. O entrá directo:</p>
+        <button type="button" class="boton boton-borde boton-ancho" data-demo="cliente">Ver la vía de Sofía</button>
+        <button type="button" class="boton boton-borde boton-ancho" data-demo="entrenador">Entrar como Bruno, entrenador</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

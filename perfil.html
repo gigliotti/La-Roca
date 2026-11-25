@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="noindex">
+  <title>Tu vía · La Roca</title>
+  <meta name="theme-color" content="#102a40">
+  <link rel="icon" href="img/marca/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display:ital@0;1&family=Permanent+Marker&display=swap">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="js/vendor/supabase-2.119.0.js" defer></script>
+  <script type="module" src="js/app/perfil.js"></script>
+</head>
+<body class="app">
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera cabecera-app">
+    <a class="marca" href="./">
+      <img src="img/marca/la-roca-horizontal-fondo-oscuro.svg" alt="La Roca, ir al sitio" width="357" height="104">
+    </a>
+    <nav class="nav-app" aria-label="Tu cuenta">
+      <a href="perfil" aria-current="page" data-solo="sesion" hidden>Tu vía</a>
+      <a href="entrenador" data-solo="entrenador" hidden>Panel</a>
+      <button type="button" class="boton-texto" data-accion="salir" data-solo="sesion" hidden>Salir</button>
+    </nav>
+  </header>
+
+  <main id="contenido" class="app-main dia">
+    <p class="aviso-demo" id="aviso-demo" hidden>
+      <strong>Modo demo.</strong> Los datos quedan solo en este navegador.
+      <button type="button" class="boton-texto" data-accion="reiniciar-demo">Empezar de cero</button>
+    </p>
+
+    <section class="via-cabeza" aria-labelledby="via-titulo">
+      <p class="antetitulo" id="via-antetitulo">Tu vía en La Roca</p>
+      <h1 id="via-titulo">Tu vía</h1>
+      <dl class="via-resumen" id="via-resumen" hidden>
+        <div><dt>Hitos</dt><dd id="resumen-hitos">0</dd></div>
+        <div><dt>Clases</dt><dd id="resumen-clases">0</dd></div>
+        <div><dt>Desde</dt><dd id="resumen-desde">—</dd></div>
+      </dl>
+      <a class="boton boton-chico" id="sumar-hito" href="entrenador" hidden>Anotar un hito</a>
+    </section>
+
+    <form class="bienvenida noche" id="bienvenida" novalidate hidden>
+      <h2>Primero, <em>¿cómo te llamás?</em></h2>
+      <p>Así te saluda tu vía y lo ve quien te entrena.</p>
+      <div class="campo">
+        <label for="bienvenida-nombre">Tu nombre</label>
+        <input type="text" id="bienvenida-nombre" name="nombre" autocomplete="given-name" maxlength="60" required>
+        <p class="error">Escribí tu nombre.</p>
+      </div>
+      <button type="submit" class="boton">Listo</button>
+    </form>
+
+    <section class="linea-via" aria-labelledby="via-lista-titulo">
+      <h2 class="visually-hidden" id="via-lista-titulo">Hitos, del más nuevo al primero</h2>
+      <p class="via-cargando" id="via-cargando">Cargando tu vía…</p>
+      <div class="via-proximo" id="via-proximo" hidden>
+        <span class="via-presa via-presa-vacia" aria-hidden="true"></span>
+        <p id="via-proximo-texto">Tu próximo hito te espera en la próxima clase.</p>
+      </div>
+      <ol class="via-lista" id="via-lista"></ol>
+      <p class="via-inicio" id="via-inicio" hidden></p>
+    </section>
+
+    <section class="tus-datos" id="tus-datos" hidden aria-labelledby="tus-datos-titulo">
+      <details>
+        <summary id="tus-datos-titulo">Tus datos</summary>
+        <form class="formulario-app noche" id="form-datos" novalidate>
+          <div class="campo">
+            <label for="datos-nombre">Nombre</label>
+            <input type="text" id="datos-nombre" name="nombre" autocomplete="given-name" maxlength="60" required>
+            <p class="error">Escribí tu nombre.</p>
+          </div>
+          <div class="campo">
+            <label for="datos-instagram">Tu Instagram <span class="opcional">(opcional, para etiquetarte)</span></label>
+            <input type="text" id="datos-instagram" name="instagram" autocomplete="off" autocapitalize="off" spellcheck="false"
+                   maxlength="31" pattern="@?[A-Za-z0-9._]{1,30}" placeholder="@usuario">
+            <p class="error">Solo letras, números, punto y guion bajo.</p>
+          </div>
+          <p class="ayuda">Entrás con <strong id="datos-email"></strong>.</p>
+          <button type="submit" class="boton">Guardar</button>
+        </form>
+      </details>
+    </section>
+  </main>
+
+  <!-- Un hito de la vía -->
+  <template id="plantilla-hito">
+    <li class="hito">
+      <span class="via-presa" aria-hidden="true"></span>
+      <article class="hito-tarjeta">
+        <p class="hito-meta"><time class="hito-fecha"></time><span class="hito-tipo"></span></p>
+        <h3 class="hito-titulo"></h3>
+        <p class="hito-grado" hidden></p>
+        <blockquote class="hito-nota" hidden>
+          <p class="hito-nota-texto"></p>
+          <footer class="hito-nota-firma"></footer>
+        </blockquote>
+        <div class="hito-video" hidden>
+          <video controls playsinline preload="metadata"></video>
+        </div>
+        <div class="hito-subida" hidden>
+          <progress max="1" value="0"></progress>
+          <span class="hito-subida-texto">Subiendo el video…</span>
+        </div>
+        <div class="hito-acciones">
+          <button type="button" class="boton boton-chico" data-accion="compartir">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 7.5 7.5l1.4 1.4L11 6.8V15h2V6.8l2.1 2.1 1.4-1.4L12 3Zm-7 9v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7h-2v7H7v-7H5Z"/></svg>
+            Compartir
+          </button>
+          <label class="boton boton-chico boton-borde hito-subir">
+            <input type="file" accept="video/*" class="visually-hidden">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v3.5l4-2.5v10l-4-2.5V18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Z"/></svg>
+            <span class="hito-subir-texto">Sumar video</span>
+          </label>
+        </div>
+      </article>
+    </li>
+  </template>
+
+  <!-- Separador de mes -->
+  <template id="plantilla-mes">
+    <li class="via-mes"><span class="cinta cinta-sol"></span></li>
+  </template>
+
+  <!-- Armar la historia para Instagram -->
+  <dialog class="compartir noche" id="compartir" aria-labelledby="compartir-titulo">
+    <div class="compartir-cabeza">
+      <h2 id="compartir-titulo">Compartí tu hito</h2>
+      <form method="dialog">
+        <button type="submit" class="boton-icono" aria-label="Cerrar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.4 5 5 6.4 10.6 12 5 17.6 6.4 19l5.6-5.6 5.6 5.6 1.4-1.4-5.6-5.6L19 6.4 17.6 5 12 10.6 6.4 5Z"/></svg>
+        </button>
+      </form>
+    </div>
+
+    <div class="compartir-cuerpo">
+      <div class="compartir-vista">
+        <canvas id="lienzo" width="1080" height="1920" role="img" aria-label="Vista previa de la historia para Instagram"></canvas>
+        <div class="compartir-armando" id="armando" hidden>
+          <p>Armando tu video…</p>
+          <progress id="armando-progreso" max="1" value="0"></progress>
+          <p class="ayuda">Dejá esta pantalla abierta, tarda lo que dura el video.</p>
+        </div>
+      </div>
+
+      <div class="compartir-opciones">
+        <fieldset class="chips">
+          <legend>Fondo</legend>
+          <label><input type="radio" name="estilo" value="arena" checked> Arena</label>
+          <label><input type="radio" name="estilo" value="noche"> Noche</label>
+        </fieldset>
+
+        <label class="interruptor"><input type="checkbox" id="con-nombre" checked> Mostrar mi nombre</label>
+
+        <div class="compartir-video" id="opciones-video" hidden>
+          <label class="interruptor"><input type="checkbox" id="con-video" checked> Con el video</label>
+          <label class="interruptor"><input type="checkbox" id="con-sonido" checked> Con sonido</label>
+          <div class="campo-rango" id="campo-desde">
+            <label for="desde">Empieza en el segundo <output id="desde-valor" for="desde">0</output></label>
+            <input type="range" id="desde" min="0" max="0" step="0.5" value="0">
+          </div>
+        </div>
+
+        <button type="button" class="boton boton-ancho" id="armar" hidden>Armar video</button>
+
+        <div class="compartir-listo" id="listo">
+          <button type="button" class="boton boton-ancho" id="compartir-ya">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM17.5 5.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
+            Compartir en Instagram
+          </button>
+          <a class="boton boton-borde boton-ancho" id="descargar" download>Descargar</a>
+        </div>
+
+        <p class="formulario-estado" id="compartir-estado" role="status" aria-live="polite"></p>
+
+        <div class="compartir-texto">
+          <p class="compartir-texto-titulo">Texto para pegar</p>
+          <p id="texto-compartir"></p>
+          <button type="button" class="boton-texto" id="copiar">Copiar texto</button>
+        </div>
+        <p class="ayuda">En el menú que se abre, tocá Instagram y elegí Historia. Si no aparece, descargala y subila desde Instagram.</p>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>
