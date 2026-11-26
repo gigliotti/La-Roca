@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="noindex">
+  <title>Panel del muro · La Roca</title>
+  <meta name="theme-color" content="#102a40">
+  <link rel="icon" href="img/marca/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display:ital@0;1&family=Permanent+Marker&display=swap">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="js/vendor/supabase-2.119.0.js" defer></script>
+  <script type="module" src="js/app/entrenador.js"></script>
+</head>
+<body class="app">
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera cabecera-app">
+    <a class="marca" href="./">
+      <img src="img/marca/la-roca-horizontal-fondo-oscuro.svg" alt="La Roca, ir al sitio" width="357" height="104">
+    </a>
+    <nav class="nav-app" aria-label="Tu cuenta">
+      <a href="perfil" data-solo="sesion" hidden>Tu vía</a>
+      <a href="entrenador" aria-current="page" data-solo="entrenador" hidden>Panel</a>
+      <button type="button" class="boton-texto" data-accion="salir" data-solo="sesion" hidden>Salir</button>
+    </nav>
+  </header>
+
+  <main id="contenido" class="app-main dia panel">
+    <p class="aviso-demo" id="aviso-demo" hidden>
+      <strong>Modo demo.</strong> Los datos quedan solo en este navegador.
+      <button type="button" class="boton-texto" data-accion="reiniciar-demo">Empezar de cero</button>
+    </p>
+
+    <section class="panel-cabeza" aria-labelledby="titulo-panel">
+      <p class="antetitulo">Panel del muro · <time id="hoy-fecha"></time></p>
+      <h1 id="titulo-panel">¿Quién escaló <em>hoy</em>?</h1>
+      <p class="panel-bajada">Elegí a la persona y anotá lo que logró en la clase. Aparece al instante en su vía.</p>
+    </section>
+
+    <p class="panel-sin-permiso noche" id="sin-permiso" hidden>
+      Este panel es para quienes entrenan en La Roca. Si entrenás acá, pedile al equipo que te habilite.
+      <a class="boton boton-chico" href="perfil">Ir a tu vía</a>
+    </p>
+
+    <section class="panel-paso" id="paso-persona" hidden aria-labelledby="titulo-persona">
+      <h2 class="panel-subtitulo" id="titulo-persona">Personas</h2>
+      <div class="buscador">
+        <label for="buscar" class="visually-hidden">Buscar por nombre o mail</label>
+        <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 3a7 7 0 0 1 5.6 11.2l5.1 5.1-1.4 1.4-5.1-5.1A7 7 0 1 1 10 3Zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"/></svg>
+        <input type="search" id="buscar" placeholder="Buscar por nombre o mail" autocomplete="off" enterkeyhint="search">
+      </div>
+      <ul class="personas" id="personas"></ul>
+      <p class="personas-vacio" id="personas-vacio" hidden>No encontramos a nadie así. Sumala abajo.</p>
+
+      <details class="nueva-persona" id="nueva-persona">
+        <summary>Sumar a alguien nuevo</summary>
+        <form class="formulario-app noche" id="form-persona" novalidate>
+          <div class="campo">
+            <label for="persona-nombre">Nombre</label>
+            <input type="text" id="persona-nombre" name="nombre" autocomplete="off" maxlength="60" required>
+            <p class="error">Escribí el nombre.</p>
+          </div>
+          <div class="campo">
+            <label for="persona-email">Mail</label>
+            <input type="email" id="persona-email" name="email" autocomplete="off" inputmode="email" required>
+            <p class="error">Escribí un mail válido.</p>
+            <p class="ayuda">Con este mail entra a ver su vía. Si ya tiene cuenta, se vincula sola.</p>
+          </div>
+          <button type="submit" class="boton">Sumar y anotar su hito</button>
+        </form>
+      </details>
+    </section>
+
+    <section class="panel-paso hito-nuevo noche" id="paso-hito" hidden aria-labelledby="titulo-hito">
+      <div class="hito-nuevo-cabeza">
+        <h2 id="titulo-hito">Hito para <em id="hito-para"></em></h2>
+        <button type="button" class="boton-texto" id="cambiar-persona">Cambiar persona</button>
+      </div>
+
+      <form id="form-hito" novalidate>
+        <fieldset class="sugerencias" id="sugerencias">
+          <legend>¿Qué logró hoy?</legend>
+        </fieldset>
+
+        <div class="campo">
+          <label for="hito-titulo">Título del hito</label>
+          <input type="text" id="hito-titulo" name="titulo" maxlength="80" required autocomplete="off">
+          <p class="error">Poné un título corto, por ejemplo «Primer talón».</p>
+        </div>
+
+        <div class="campo-fila">
+          <div class="campo">
+            <label for="hito-grado">Grado <span class="opcional">(opcional)</span></label>
+            <input type="text" id="hito-grado" name="grado" maxlength="12" placeholder="5+, 6a, V2…" autocomplete="off">
+          </div>
+          <div class="campo">
+            <label for="hito-fecha">Fecha</label>
+            <input type="date" id="hito-fecha" name="fecha" required>
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="hito-nota">Unas palabras <span class="opcional">(opcional, las lee en su vía)</span></label>
+          <textarea id="hito-nota" name="nota" maxlength="280" rows="3" placeholder="Hoy soltaste el miedo en el desplome. ¡A la próxima, sin descansar!"></textarea>
+        </div>
+
+        <div class="campo campo-video">
+          <span class="etiqueta">Video <span class="opcional">(opcional)</span></span>
+          <label class="boton boton-borde boton-chico">
+            <input type="file" id="hito-video" accept="video/*" class="visually-hidden">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v3.5l4-2.5v10l-4-2.5V18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Z"/></svg>
+            <span id="hito-video-boton">Elegir video</span>
+          </label>
+          <p class="ayuda" id="hito-video-nombre">Hasta 50 MB. Si no, lo puede sumar la persona desde su vía.</p>
+        </div>
+
+        <div class="hito-subida" id="hito-subida" hidden>
+          <progress max="1" value="0"></progress>
+          <span>Subiendo el video…</span>
+        </div>
+
+        <button type="submit" class="boton boton-ancho" id="guardar-hito">Guardar hito</button>
+      </form>
+    </section>
+
+    <section class="panel-hoy" id="panel-hoy" hidden aria-labelledby="titulo-hoy">
+      <h2 class="panel-subtitulo" id="titulo-hoy">Hoy en el muro</h2>
+      <ul class="hoy-lista" id="hoy-lista"></ul>
+      <p class="hoy-vacio" id="hoy-vacio">Todavía no hay hitos anotados hoy.</p>
+    </section>
+  </main>
+
+  <template id="plantilla-persona">
+    <li>
+      <button type="button" class="persona">
+        <span class="persona-inicial" aria-hidden="true"></span>
+        <span class="persona-texto">
+          <span class="persona-nombre"></span>
+          <span class="persona-dato"></span>
+        </span>
+      </button>
+    </li>
+  </template>
+
+  <template id="plantilla-hoy">
+    <li class="hoy-item">
+      <span class="via-presa" aria-hidden="true"></span>
+      <div class="hoy-texto">
+        <a class="hoy-persona"></a>
+        <span class="hoy-titulo"></span>
+      </div>
+      <button type="button" class="boton-texto hoy-borrar">Borrar</button>
+    </li>
+  </template>
+</body>
+</html>

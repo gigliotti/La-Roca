@@ -1,0 +1,1629 @@
+/* =========================================================
+   La Roca · muro de escalada
+   Marca "Canto rodado": el sol, el mar y la arena de un
+   amanecer en la costa. Colores y tipografías de brand/README.md.
+   ========================================================= */
+
+:root {
+  /* Colores de marca (brand/colores.css) */
+  --roca-sol: #ff7a2f;
+  --roca-atardecer: #e8461e;
+  --roca-mar: #1e4f7a;
+  --roca-hondo: #102a40;
+  --roca-arena: #f3e3cf;
+  --roca-oxido: #b03a10;
+
+  /* Derivados para la web */
+  --hondo-2: #173a58;      /* tarjetas sobre fondo oscuro */
+  --hondo-3: #0b2134;      /* fondo oscuro de las secciones claras en modo oscuro */
+  --arena-suave: #cdbfad;  /* texto secundario sobre fondo oscuro (7,7:1 sobre Hondo) */
+  --arena-clara: #fbf4ea;  /* tarjetas sobre Arena */
+  --borde-oscuro: #84898a; /* bordes de campos sobre fondo oscuro (4:1) */
+  --sol-claro: #ff9a5f;    /* hover de botones: más contraste con Hondo */
+
+  /* Colores con tema (claro / oscuro) */
+  --fondo: var(--roca-arena);
+  --tarjeta: var(--arena-clara);
+  --texto: var(--roca-hondo);
+  --texto-suave: var(--roca-mar);
+  --acento: var(--roca-oxido);
+  --foco: var(--roca-mar);
+  --linea: #dcc8b0;
+
+  @media (prefers-color-scheme: dark) {
+    --fondo: var(--hondo-3);
+    --tarjeta: var(--hondo-2);
+    --texto: var(--roca-arena);
+    --texto-suave: var(--arena-suave);
+    --acento: var(--roca-sol);
+    --foco: var(--roca-sol);
+    --linea: #24476a;
+  }
+
+  @supports (color: light-dark(#000, #fff)) {
+    --fondo: light-dark(var(--roca-arena), var(--hondo-3));
+    --tarjeta: light-dark(var(--arena-clara), var(--hondo-2));
+    --texto: light-dark(var(--roca-hondo), var(--roca-arena));
+    --texto-suave: light-dark(var(--roca-mar), var(--arena-suave));
+    --acento: light-dark(var(--roca-oxido), var(--roca-sol));
+    --foco: light-dark(var(--roca-mar), var(--roca-sol));
+    --linea: light-dark(#dcc8b0, #24476a);
+  }
+
+  /* Tipografía de marca */
+  --fuente-titulos: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --fuente-texto: "DM Sans", "Segoe UI", system-ui, sans-serif;
+  --fuente-cinta: "Permanent Marker", "Segoe Print", cursive;
+
+  /* Medidas */
+  --margen: clamp(1rem, 0.5rem + 2.5vw, 3rem);
+  --ancho-max: 78rem;
+  --radio: 1.25rem;
+  --alto-cabecera: 4.75rem;
+
+  color-scheme: light dark;
+  accent-color: var(--roca-sol);
+  scroll-padding-top: calc(var(--alto-cabecera) + 1rem);
+  scrollbar-color: var(--borde-oscuro) var(--roca-hondo);
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ---------- Base ---------- */
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: var(--fuente-texto);
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* DM Serif Display tiene un solo peso: nunca se pide negrita */
+:where(h1, h2, h3) {
+  font-family: var(--fuente-titulos);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  margin: 0;
+}
+
+:where(p, li) {
+  text-wrap: pretty;
+}
+
+:where(img, svg, video) {
+  display: block;
+  max-width: 100%;
+}
+
+:where(a) {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+:where(a, button, input, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 3px;
+}
+
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+.saltar {
+  position: absolute;
+  z-index: 100;
+  inset-block-start: 0.75rem;
+  inset-inline-start: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: var(--roca-sol);
+  color: var(--roca-hondo);
+  font-weight: 600;
+  translate: 0 -200%;
+
+  &:focus-visible {
+    translate: 0 0;
+  }
+}
+
+/* Secciones de noche (siempre oscuras) y de día (siguen el tema) */
+.noche {
+  color-scheme: dark;
+  --fondo: var(--roca-hondo);
+  --tarjeta: var(--hondo-2);
+  --texto: var(--roca-arena);
+  --texto-suave: var(--arena-suave);
+  --acento: var(--roca-sol);
+  --foco: var(--roca-sol);
+  --linea: #24476a;
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+.dia {
+  --punto: color-mix(in oklab, var(--texto) 14%, transparent);
+  background-color: var(--fondo);
+  /* La grilla de agujeros de un panel de muro */
+  background-image: radial-gradient(circle, var(--punto) 0 1.5px, transparent 2px);
+  background-size: 2.5rem 2.5rem;
+  background-position: center top;
+  color: var(--texto);
+}
+
+.antetitulo {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+.seccion-cabeza {
+  max-width: var(--ancho-max);
+  margin-inline: auto;
+  padding: clamp(4.5rem, 10vh, 7.5rem) var(--margen) clamp(2rem, 5vh, 3.5rem);
+
+  & h2 {
+    font-size: clamp(2.3rem, 1.4rem + 3.4vw, 4.4rem);
+  }
+
+  & p {
+    margin: 0.75rem 0 0;
+    max-width: 38rem;
+    color: var(--texto-suave);
+  }
+}
+
+/* La cursiva de DM Serif Display destaca una palabra (guía de marca) */
+:where(h1, h2) em {
+  font-style: italic;
+  color: var(--acento);
+}
+
+/* ---------- Botones ---------- */
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.85rem 1.6rem;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: var(--roca-sol);
+  color: var(--roca-hondo);
+  font-family: var(--fuente-texto);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+
+  &:hover {
+    background: var(--sol-claro);
+  }
+}
+
+.boton-chico {
+  min-height: 2.5rem;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.92rem;
+}
+
+.boton-ancho {
+  width: 100%;
+}
+
+/* ---------- Cinta de marcar vías ---------- */
+
+.cinta {
+  display: inline-block;
+  padding: 0.2em 0.75em 0.25em;
+  background: var(--roca-sol);
+  color: var(--roca-hondo);
+  font-family: var(--fuente-cinta);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  rotate: -2deg;
+  /* Bordes cortados a mano */
+  clip-path: polygon(0 10%, 3% 0, 97% 5%, 100% 0, 98% 32%, 100% 58%, 97% 82%, 100% 100%, 4% 95%, 0 100%, 2% 68%, 0 42%, 3% 22%);
+}
+
+.cinta-sol { background: var(--roca-sol); color: var(--roca-hondo); }
+.cinta-arena { background: var(--roca-arena); color: var(--roca-hondo); }
+.cinta-mar { background: var(--roca-mar); color: var(--roca-arena); }
+
+.muestra {
+  position: absolute;
+  z-index: 4;
+  inset-block-end: 0.75rem;
+  inset-inline-end: 0.75rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 0.4rem;
+  background: rgb(16 42 64 / 0.75);
+  color: var(--roca-arena);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  pointer-events: none;
+
+  :root:not(.con-muestras) & {
+    display: none;
+  }
+}
+
+/* ---------- Cabecera flotante ---------- */
+
+.cabecera {
+  color-scheme: dark;
+  --foco: var(--roca-sol);
+  position: fixed;
+  z-index: 50;
+  inset-block-start: 0.75rem;
+  inset-inline: 0;
+  width: min(100% - 2 * var(--margen), 62rem);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.45rem 0.45rem 1.1rem;
+  border: 1px solid rgb(243 227 207 / 0.14);
+  border-radius: 999px;
+  background: rgb(16 42 64 / 0.9);
+  color: var(--roca-arena);
+  box-sizing: border-box;
+
+  @supports (backdrop-filter: blur(1px)) {
+    background: rgb(16 42 64 / 0.82);
+    backdrop-filter: blur(14px) saturate(1.3);
+  }
+}
+
+.marca {
+  display: inline-flex;
+  margin-inline-end: auto;
+  padding-block: 0.25rem;
+  border-radius: 0.5rem;
+
+  /* La horizontal no va a menos de 120 px de ancho (guía de marca) */
+  & img {
+    width: auto;
+    height: 2.4rem;
+    min-width: 120px;
+  }
+}
+
+.navegacion {
+  display: none;
+
+  @media (min-width: 62em) {
+    display: block;
+    margin-inline-end: 0.5rem;
+  }
+
+  & ul {
+    display: flex;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  & a {
+    display: inline-block;
+    padding: 0.5rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    text-decoration: none;
+    color: var(--arena-suave);
+    transition: color 0.2s, background-color 0.2s;
+
+    &:hover {
+      color: var(--roca-arena);
+      background: rgb(243 227 207 / 0.08);
+    }
+  }
+}
+
+/* Entrar a tu vía (perfil con los hitos). En celulares angostos no entra
+   en la cabecera: queda el enlace de la portada y el del pie. */
+.enlace-entrar {
+  display: none;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  color: var(--roca-arena);
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    background: rgb(243 227 207 / 0.08);
+  }
+
+  @media (min-width: 30em) {
+    display: inline-flex;
+  }
+}
+
+.boton-videos {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.5rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid var(--borde-oscuro);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--roca-arena);
+  font: inherit;
+  font-size: 0.88rem;
+  cursor: pointer;
+
+  &[hidden] {
+    display: none;
+  }
+
+  & .icono {
+    width: 0.95rem;
+    height: 0.95rem;
+    fill: currentColor;
+  }
+
+  &[data-estado="reproduciendo"] .icono-play,
+  &:not([data-estado="reproduciendo"]) .icono-pausa {
+    display: none;
+  }
+
+  @media (max-width: 39.99em) {
+    min-width: 2.5rem;
+    justify-content: center;
+    padding: 0.45rem;
+
+    & .boton-videos-texto {
+      position: absolute;
+      clip-path: inset(50%);
+      overflow: hidden;
+      width: 1px;
+      height: 1px;
+      white-space: nowrap;
+    }
+  }
+}
+
+/* =========================================================
+   PORTADA
+   Fondo de arena con el logo y un arco grande, con la forma
+   del arco del símbolo, que hace de ventana al video. Al bajar,
+   el arco se agranda hasta llenar la pantalla y entrás al video.
+   Sin animaciones por scroll (o con movimiento reducido) queda
+   una portada fija: logo, arco con video y el texto debajo.
+   ========================================================= */
+
+.portada {
+  position: relative;
+  background: var(--roca-hondo);
+}
+
+.portada-fija {
+  --placa-fondo: var(--roca-arena);
+  --placa-tinta: var(--roca-hondo);
+
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: clamp(1.25rem, 3dvh, 2rem);
+  min-height: 100dvh;
+  box-sizing: border-box;
+  padding: calc(var(--alto-cabecera) + 4.5rem) var(--margen) clamp(2.5rem, 7dvh, 4.5rem);
+
+  @media (prefers-color-scheme: dark) {
+    --placa-fondo: var(--roca-hondo);
+    --placa-tinta: var(--roca-arena);
+  }
+
+  /* Lo que va sobre la placa queda por encima del arco */
+  & > :where(.portada-logo, .placa-pista, .portada-texto) {
+    position: relative;
+    z-index: 3;
+  }
+}
+
+.portada-video {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--roca-hondo);
+}
+
+/* El arco es transparente: su sombra pinta la placa alrededor,
+   así que el video solo se ve adentro. Tiene las proporciones
+   del arco del símbolo (ancho 4, alto 5, medio círculo arriba). */
+.arco {
+  position: relative;
+  z-index: 1;
+  height: min(46dvh, 30rem, 105vw);
+  aspect-ratio: 4 / 5;
+  border-radius: 50% 50% 0 0 / 40% 40% 0 0;
+  box-shadow: 0 0 0 300vmax var(--placa-fondo);
+  pointer-events: none;
+}
+
+.portada-logo img {
+  width: min(64vw, 20rem);
+  height: auto;
+}
+
+.placa-datos {
+  position: absolute;
+  z-index: 3;
+  inset-block-start: calc(var(--alto-cabecera) + 1.75rem);
+  inset-inline: var(--margen);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  color: var(--placa-tinta);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  & p {
+    margin: 0;
+  }
+}
+
+.placa-pista {
+  display: none;
+}
+
+.portada-texto {
+  justify-self: stretch;
+  max-width: 46rem;
+  margin-inline: auto;
+  color: var(--placa-tinta);
+  text-align: center;
+
+  & .antetitulo {
+    color: inherit;
+    opacity: 0.85;
+  }
+
+  & h1 {
+    font-size: clamp(2.8rem, 1.5rem + 5vw, 6.25rem);
+    line-height: 0.98;
+  }
+}
+
+.portada-entrar {
+  margin: 1.1rem 0 0;
+  font-size: 0.95rem;
+
+  & a {
+    font-weight: 600;
+  }
+}
+
+.portada-bajada {
+  max-width: 34rem;
+  margin: 1.1rem auto 1.6rem;
+  font-size: clamp(1.05rem, 0.98rem + 0.35vw, 1.22rem);
+}
+
+/* Con animaciones por scroll: el arco se abre y entrás al video */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    /* La cabecera también sigue la portada (aparece el logo cuando se abre el arco) */
+    html {
+      timeline-scope: --portada;
+    }
+
+    .portada {
+      height: 250dvh;
+      view-timeline: --portada block;
+      /* Sin esto, el scroll-padding de la cabecera corre el inicio de la línea de tiempo */
+      view-timeline-inset: 0;
+    }
+
+    .portada-fija {
+      position: sticky;
+      inset-block-start: 0;
+      height: 100dvh;
+      min-height: 0;
+      align-content: center;
+      padding-block-end: 1.5rem;
+
+      /* Velo para leer el texto sobre el video */
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: 2;
+        inset: 0;
+        background: linear-gradient(to top, rgb(16 42 64 / 0.9), rgb(16 42 64 / 0.3) 55%, rgb(16 42 64 / 0) 75%);
+        opacity: 0;
+        animation: aparecer-velo linear both;
+        animation-timeline: --portada;
+        animation-range: contain 30% contain 60%;
+      }
+    }
+
+    .arco {
+      transform-origin: 50% 55%;
+      animation: abrir-arco linear both;
+      animation-timeline: --portada;
+      animation-range: contain 6% contain 55%;
+    }
+
+    .portada-video {
+      animation: acercar linear both;
+      animation-timeline: --portada;
+      animation-range: contain 0% contain 60%;
+    }
+
+    .placa-datos,
+    .portada-logo,
+    .placa-pista {
+      animation: desvanecer linear both;
+      animation-timeline: --portada;
+      animation-range: contain 0% contain 14%;
+    }
+
+    .placa-pista {
+      display: grid;
+      justify-items: center;
+      gap: 0.6rem;
+      margin: 0;
+      color: var(--placa-tinta);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+
+      &::after {
+        content: "";
+        width: 1px;
+        height: 2rem;
+        background: currentColor;
+        transform-origin: top;
+        animation: pista 2.2s ease-in-out infinite;
+      }
+    }
+
+    .portada-texto {
+      --acento: var(--roca-sol);
+      position: absolute;
+      inset-inline: var(--margen);
+      inset-block-end: clamp(2rem, 6dvh, 4rem);
+      margin: 0;
+      color: var(--roca-arena);
+      text-align: start;
+      animation: aparecer linear both;
+      animation-timeline: --portada;
+      animation-range: contain 40% contain 66%;
+    }
+
+    .portada-bajada {
+      margin-inline: 0;
+    }
+
+    /* El logo de la cabecera aparece cuando el de la portada ya se fue */
+    .marca {
+      animation: aparecer-marca linear both;
+      animation-timeline: --portada;
+      animation-range: contain 10% contain 30%;
+    }
+  }
+}
+
+/* El arco crece lento al principio y después se acelera hasta tapar la pantalla */
+@keyframes abrir-arco {
+  0% { scale: 1; }
+  40% { scale: 1.3; }
+  100% { scale: 7; }
+}
+
+@keyframes aparecer-marca {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes acercar {
+  from { scale: 1.18; }
+  to { scale: 1; }
+}
+
+@keyframes desvanecer {
+  to {
+    opacity: 0;
+    translate: 0 -1.5rem;
+  }
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    translate: 0 2.5rem;
+  }
+}
+
+@keyframes aparecer-velo {
+  to { opacity: 1; }
+}
+
+@keyframes pista {
+  0% { scale: 1 0; }
+  50% { scale: 1 1; }
+  100% { scale: 1 0; transform-origin: bottom; }
+}
+
+/* =========================================================
+   MANIFIESTO
+   ========================================================= */
+
+.manifiesto {
+  padding: clamp(6rem, 20vh, 13rem) var(--margen);
+}
+
+.manifiesto-texto {
+  max-width: 60rem;
+  margin: 0 auto;
+  font-family: var(--fuente-titulos);
+  font-size: clamp(2.1rem, 1.1rem + 3.9vw, 5.2rem);
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+
+  & em {
+    font-style: italic;
+    color: var(--roca-sol);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    .manifiesto-texto {
+      view-timeline: --manifiesto block;
+      view-timeline-inset: 0;
+    }
+
+    .palabra {
+      animation: encender linear both;
+      animation-timeline: --manifiesto;
+      animation-range:
+        cover calc(18% + var(--i, 0) * var(--paso, 1%))
+        cover calc(24% + var(--i, 0) * var(--paso, 1%));
+    }
+  }
+}
+
+@keyframes encender {
+  from { opacity: 0.16; }
+  to { opacity: 1; }
+}
+
+/* =========================================================
+   LO QUE TE DA
+   ========================================================= */
+
+.que-te-da {
+  padding-block-end: clamp(3rem, 8vh, 6rem);
+}
+
+.capitulo {
+  display: grid;
+  gap: 1.75rem;
+  max-width: var(--ancho-max);
+  margin-inline: auto;
+  padding: 0 var(--margen) clamp(4rem, 12vh, 8rem);
+
+  @media (min-width: 60em) {
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
+  }
+}
+
+.capitulo-medio {
+  container-type: inline-size;
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: clip;
+  border-radius: var(--radio);
+  background: var(--hondo-2);
+
+  & video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  & .muestra {
+    inset-block: 0.75rem auto;
+  }
+
+  @media (min-width: 60em) {
+    position: sticky;
+    inset-block-start: calc(var(--alto-cabecera) + 1.25rem);
+    aspect-ratio: auto;
+    height: calc(100dvh - var(--alto-cabecera) - 2.5rem);
+    max-height: 52rem;
+  }
+}
+
+.capitulo-invertido {
+  @media (min-width: 60em) {
+    grid-template-columns: 1fr 1.15fr;
+
+    & .capitulo-medio {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    & .capitulo-texto {
+      grid-column: 1;
+      grid-row: 1;
+    }
+  }
+}
+
+.palabra-gigante {
+  position: absolute;
+  z-index: 1;
+  inset-inline-start: 0.06em;
+  inset-block-end: -0.12em;
+  font-family: var(--fuente-titulos);
+  font-size: 22cqi;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--roca-arena);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.capitulo-texto {
+  max-width: 34rem;
+
+  @media (min-width: 60em) {
+    padding-block: 18dvh;
+  }
+
+  & h3 {
+    margin-block: 1.25rem 1.1rem;
+    font-size: clamp(2rem, 1.3rem + 2.4vw, 3.3rem);
+  }
+
+  & > p {
+    margin: 0 0 1.5rem;
+    color: var(--texto-suave);
+    font-size: clamp(1.05rem, 1rem + 0.25vw, 1.2rem);
+  }
+}
+
+.capitulo-orden {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  font-family: var(--fuente-titulos);
+  font-size: 1.25rem;
+  font-style: italic;
+
+  & .cinta {
+    font-size: 1.05rem;
+    font-style: normal;
+  }
+}
+
+.lista-presas {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  & li {
+    display: flex;
+    align-items: start;
+    gap: 0.7rem;
+
+    &::before {
+      content: "";
+      flex: none;
+      width: 1.1rem;
+      height: 1.1rem;
+      margin-block-start: 0.2em;
+      background: var(--acento);
+      mask: url("../img/presa.svg") center / contain no-repeat;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    .capitulo-texto > * {
+      animation: subir-suave linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 70%;
+    }
+  }
+}
+
+@keyframes subir-suave {
+  from {
+    opacity: 0;
+    translate: 0 2rem;
+  }
+}
+
+/* =========================================================
+   ESCENAS
+   ========================================================= */
+
+.escenas {
+  padding-block-end: clamp(4rem, 10vh, 7rem);
+}
+
+.escenas-cabeza {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.nota-muestra {
+  display: block;
+  margin-block-start: 0.25rem;
+  font-size: 0.9rem;
+
+  :root:not(.con-muestras) & {
+    display: none;
+  }
+}
+
+.escenas-controles {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.boton-flecha {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 1px solid var(--borde-oscuro);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--roca-arena);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+
+  & svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--roca-sol);
+    background: var(--roca-sol);
+    color: var(--roca-hondo);
+  }
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+}
+
+.carril {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scroll-padding-inline: var(--margen);
+  scrollbar-width: thin;
+  touch-action: manipulation;
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+
+  & > ul {
+    display: flex;
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
+    width: max-content;
+    margin: 0;
+    padding: 0.75rem var(--margen) 1.5rem;
+    list-style: none;
+  }
+
+  & li {
+    scroll-snap-align: start;
+  }
+}
+
+.escena {
+  position: relative;
+  display: block;
+  width: clamp(14.5rem, 21vw, 19rem);
+  aspect-ratio: 9 / 16;
+  overflow: clip;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radio);
+  background: var(--hondo-2);
+  color: var(--roca-arena);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+
+  & video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: scale 0.5s ease;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgb(16 42 64 / 0.88), rgb(16 42 64 / 0) 52%);
+  }
+
+  & .cinta {
+    position: absolute;
+    z-index: 2;
+    inset-block-start: 1rem;
+    inset-inline-start: 0.9rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    &:hover video {
+      scale: 1.05;
+    }
+  }
+}
+
+.escena-texto {
+  position: absolute;
+  z-index: 2;
+  inset-inline: 1rem;
+  inset-block-end: 1rem;
+  font-family: var(--fuente-titulos);
+  font-size: 1.3rem;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    .carril li {
+      animation:
+        escena-entra linear backwards,
+        escena-sale linear forwards;
+      animation-timeline: view(inline);
+      animation-range: entry, exit;
+    }
+  }
+}
+
+@keyframes escena-entra {
+  from { scale: 0.9; }
+}
+
+@keyframes escena-sale {
+  to { scale: 0.9; }
+}
+
+/* ---------- Visor de escenas ---------- */
+
+.visor {
+  color-scheme: dark;
+  --foco: var(--roca-sol);
+  width: min(92vw, 64rem);
+  max-height: 92dvh;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radio);
+  overflow: clip;
+  background: var(--roca-hondo);
+  color: var(--roca-arena);
+
+  &::backdrop {
+    background: rgb(8 21 32 / 0.86);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: opacity 0.25s ease-out, scale 0.25s ease-out, display 0.25s, overlay 0.25s;
+    transition-behavior: allow-discrete;
+
+    &:not([open]) {
+      opacity: 0;
+      scale: 0.96;
+    }
+
+    @starting-style {
+      &[open] {
+        opacity: 0;
+        scale: 0.96;
+      }
+    }
+  }
+}
+
+.visor-video {
+  width: 100%;
+  height: auto;
+  max-height: calc(92dvh - 4.5rem);
+  object-fit: contain;
+  background: #000;
+}
+
+.visor-pie {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0.75rem 0.75rem 1.25rem;
+
+  & form {
+    margin: 0;
+  }
+}
+
+.visor-titulo {
+  margin: 0;
+  font-family: var(--fuente-titulos);
+  font-size: 1.25rem;
+}
+
+::view-transition-group(escena) {
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* =========================================================
+   PRIMERA VEZ
+   ========================================================= */
+
+.primera-vez {
+  padding-block-end: clamp(4.5rem, 12vh, 8rem);
+}
+
+.via {
+  counter-reset: paso;
+  display: grid;
+  gap: 1rem;
+  max-width: var(--ancho-max);
+  margin: 0 auto;
+  padding: 0 var(--margen);
+  list-style: none;
+
+  @media (min-width: 52em) {
+    grid-template-columns: repeat(4, 1fr);
+    align-items: end;
+  }
+
+  & li {
+    counter-increment: paso;
+    position: relative;
+    padding: 1.5rem 1.4rem 1.6rem;
+    border: 1px solid var(--linea);
+    border-radius: var(--radio);
+    background: var(--tarjeta);
+
+    &::before {
+      content: counter(paso);
+      display: grid;
+      place-items: center;
+      width: 3.6rem;
+      height: 3.6rem;
+      margin-block-end: 1.1rem;
+      background: url("../img/presa-llena.svg") center / contain no-repeat;
+      color: var(--roca-hondo);
+      font-family: var(--fuente-titulos);
+      font-size: 1.5rem;
+    }
+
+    /* Cada paso arranca más arriba que el anterior: es una vía */
+    @media (min-width: 52em) {
+      &:nth-child(1) { margin-block-end: 0; }
+      &:nth-child(2) { margin-block-end: 3rem; }
+      &:nth-child(3) { margin-block-end: 6rem; }
+      &:nth-child(4) { margin-block-end: 9rem; }
+    }
+  }
+
+  & h3 {
+    margin-block-end: 0.5rem;
+    font-size: 1.55rem;
+  }
+
+  & p {
+    margin: 0;
+    color: var(--texto-suave);
+  }
+}
+
+/* =========================================================
+   BRUNO
+   ========================================================= */
+
+.bruno {
+  display: grid;
+  gap: clamp(2rem, 5vw, 5rem);
+  max-width: var(--ancho-max);
+  margin-inline: auto;
+  padding: clamp(5rem, 14vh, 9rem) var(--margen);
+  box-sizing: content-box;
+
+  @media (min-width: 60em) {
+    grid-template-columns: 1fr 1.1fr;
+    align-items: center;
+  }
+}
+
+/* La sección es oscura de borde a borde aunque el contenido tenga ancho máximo */
+.bruno {
+  box-shadow: 0 0 0 100vmax var(--roca-hondo);
+  clip-path: inset(0 -100vmax);
+}
+
+.bruno-medio {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 5;
+  overflow: clip;
+  border-radius: var(--radio);
+  background: var(--hondo-2);
+
+  & video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.75;
+  }
+}
+
+.bruno-pendiente {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(1.1rem, 0.9rem + 1vw, 1.5rem);
+  rotate: -5deg;
+}
+
+.bruno-texto {
+  max-width: 38rem;
+
+  & h2 {
+    font-size: clamp(3rem, 1.7rem + 5vw, 6rem);
+  }
+
+  & > p:not([class]) {
+    color: var(--texto-suave);
+    font-size: clamp(1.05rem, 1rem + 0.25vw, 1.2rem);
+  }
+}
+
+.bruno-rol {
+  margin: 0.6rem 0 1.4rem;
+  font-family: var(--fuente-cinta);
+  font-size: 1.2rem;
+  color: var(--roca-sol);
+}
+
+.credenciales {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+
+  & li {
+    padding: 0.35rem 0.85rem;
+    border: 1px solid var(--borde-oscuro);
+    border-radius: 999px;
+    font-size: 0.92rem;
+  }
+}
+
+.cita {
+  margin: 2.25rem 0;
+  padding: 0;
+
+  & p {
+    margin: 0;
+    font-family: var(--fuente-titulos);
+    font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.7rem);
+    font-style: italic;
+    line-height: 1.12;
+    color: var(--roca-sol);
+  }
+
+  & footer {
+    margin-block-start: 0.6rem;
+    font-family: var(--fuente-cinta);
+    font-size: 1.15rem;
+
+    &::before {
+      content: "— ";
+    }
+  }
+}
+
+.bruno-enlaces {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 0.6rem;
+  margin: 0;
+
+  & a {
+    padding-block: 0.2rem;
+    text-decoration-color: var(--roca-sol);
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--roca-sol);
+    }
+  }
+}
+
+/* =========================================================
+   CORDADA + FORMULARIO
+   ========================================================= */
+
+.cordada {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  padding: clamp(5rem, 14vh, 9rem) max(var(--margen), (100% - var(--ancho-max)) / 2 + var(--margen));
+
+  @media (min-width: 60em) {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.cordada-texto {
+  max-width: 34rem;
+
+  & h2 {
+    font-size: clamp(2.5rem, 1.5rem + 3.6vw, 4.6rem);
+  }
+
+  & > p {
+    margin: 1.25rem 0 2rem;
+    color: var(--texto-suave);
+    font-size: clamp(1.05rem, 1rem + 0.25vw, 1.2rem);
+  }
+}
+
+.cordada-subtitulo {
+  margin-block-end: 1rem;
+  font-size: 1.5rem;
+}
+
+.formulario {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: calc(var(--radio) + 0.5rem);
+
+  & h3 {
+    margin-block-end: 1.5rem;
+    font-size: clamp(1.7rem, 1.3rem + 1.4vw, 2.3rem);
+  }
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0 0 1.25rem;
+
+  & > label,
+  & > legend {
+    font-weight: 600;
+  }
+
+  & input:not([type="radio"]) {
+    min-height: 3rem;
+    box-sizing: border-box;
+    padding: 0.75rem 0.9rem;
+    border: 1.5px solid var(--borde-oscuro);
+    border-radius: 0.75rem;
+    background: var(--hondo-3);
+    color: var(--roca-arena);
+    font: inherit;
+    font-size: max(1rem, 1em);
+    transition: border-color 0.2s, background-color 0.2s;
+
+    &:hover {
+      border-color: var(--arena-suave);
+    }
+  }
+
+  & :is(:user-invalid, .user-invalid-fallback) {
+    border-color: #ff9a80;
+    background: #321c22;
+  }
+
+  & :is(:user-valid, .user-valid-fallback) {
+    border-color: var(--roca-arena);
+  }
+}
+
+.ayuda {
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+.opcional {
+  color: var(--texto-suave);
+  font-weight: 400;
+}
+
+.error {
+  display: none;
+  margin: 0.2rem 0 0;
+  color: #ffc0ad;
+  font-size: 0.92rem;
+
+  :is(:user-invalid, .user-invalid-fallback) + & {
+    display: block;
+  }
+}
+
+.opciones {
+  border: 0;
+  padding: 0;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+
+  & legend {
+    margin-block-end: 0.5rem;
+    padding: 0;
+  }
+}
+
+.opcion {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  & input {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 0;
+  }
+
+  & label {
+    padding-block: 0.4rem;
+    cursor: pointer;
+  }
+}
+
+.trampa {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.formulario-estado {
+  min-height: 1lh;
+  margin: 1rem 0 0;
+  color: var(--roca-sol);
+  font-weight: 600;
+
+  &:empty {
+    margin: 0;
+    min-height: 0;
+  }
+
+  &[data-tipo="error"] {
+    color: #ffc0ad;
+  }
+}
+
+.formulario-nota {
+  margin: 0.75rem 0 0;
+  color: var(--texto-suave);
+  font-size: 0.88rem;
+}
+
+/* =========================================================
+   PREGUNTAS
+   ========================================================= */
+
+.preguntas {
+  padding: clamp(4.5rem, 12vh, 8rem) var(--margen);
+
+  & h2 {
+    max-width: 52rem;
+    margin: 0 auto 2rem;
+    font-size: clamp(2.3rem, 1.4rem + 3.4vw, 4.2rem);
+  }
+}
+
+.acordeon {
+  max-width: 52rem;
+  margin-inline: auto;
+  border-block-start: 1px solid var(--linea);
+
+  & details {
+    border-block-end: 1px solid var(--linea);
+  }
+
+  & summary {
+    display: flex;
+    align-items: center;
+    gap: 0.75ch;
+    padding: 1.1rem 0;
+    font-family: var(--fuente-titulos);
+    font-size: clamp(1.3rem, 1.15rem + 0.6vw, 1.65rem);
+    list-style: none;
+    cursor: pointer;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: "";
+      flex-shrink: 0;
+      width: 0.8em;
+      height: 0.8em;
+      background-color: var(--acento);
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 8l7 8 7-8' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
+      rotate: -90deg;
+    }
+
+    &:hover {
+      color: var(--acento);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      &::before {
+        transition: rotate 0.2s;
+      }
+    }
+  }
+
+  & details[open] > summary::before {
+    rotate: 0deg;
+  }
+
+  & details::details-content {
+    interpolate-size: allow-keywords;
+    overflow: clip;
+    contain: layout;
+  }
+
+  & details:not([open])::details-content {
+    block-size: 0;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    & details::details-content {
+      transition: block-size, content-visibility, display;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-in-out;
+      transition-behavior: allow-discrete;
+    }
+  }
+
+  & details p {
+    margin: 0;
+    padding: 0 0 1.35rem calc(0.8em + 0.75ch);
+    max-width: 42rem;
+    color: var(--texto-suave);
+  }
+}
+
+/* =========================================================
+   PIE
+   ========================================================= */
+
+.pie {
+  display: grid;
+  gap: 0.5rem;
+  padding: clamp(3rem, 8vh, 5rem) var(--margen) 2.5rem;
+  color: var(--arena-suave);
+  font-size: 0.95rem;
+
+  & p {
+    margin: 0;
+  }
+}
+
+/* Logo vertical para fondo oscuro. No va a menos de 60 px de ancho (guía de marca). */
+.pie-logo {
+  width: clamp(8rem, 16vw, 11rem);
+  height: auto;
+  margin-block-end: 1.25rem;
+}
+
+.pie-creditos {
+  max-width: 40rem;
+  margin-block-start: 1rem !important;
+  font-size: 0.85rem;
+
+  :root:not(.con-muestras) & {
+    display: none;
+  }
+}
+
+/* =========================================================
+   Modo de alto contraste (Windows)
+   ========================================================= */
+
+@media (forced-colors: active) {
+  .palabra-gigante {
+    display: none;
+  }
+
+  .portada-texto,
+  .placa-datos {
+    color: CanvasText;
+  }
+
+  .cinta,
+  .muestra {
+    border: 1px solid CanvasText;
+  }
+
+  .lista-presas li::before,
+  .acordeon summary::before {
+    background: CanvasText;
+  }
+}
