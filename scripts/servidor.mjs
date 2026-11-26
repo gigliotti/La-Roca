@@ -33,6 +33,11 @@ createServer(async (pedido, respuesta) => {
     const ruta = decodeURIComponent(new URL(pedido.url, 'http://localhost').pathname);
     let archivo = normalize(join(raiz, ruta));
     if (!archivo.startsWith(raiz)) throw Object.assign(new Error('fuera'), { code: 'ENOENT' });
+    // Como en Vercel (cleanUrls): /perfil sirve perfil.html
+    if (!extname(archivo)) {
+      const conHtml = `${archivo}.html`;
+      if (await stat(conHtml).then((info) => info.isFile(), () => false)) archivo = conHtml;
+    }
     if ((await stat(archivo)).isDirectory()) archivo = join(archivo, 'index.html');
     const contenido = await readFile(archivo);
     respuesta.writeHead(200, {
