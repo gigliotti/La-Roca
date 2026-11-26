@@ -110,7 +110,8 @@ en `data-endpoint` y en `action` del `<form>`, y agregá ese dominio a `connect-
 - Video y foto de Bruno.
 - Imagen para compartir en redes (`og:image`).
 - Conectar el formulario.
-- Conectar Supabase para los perfiles (ver «Conectar Supabase»), con SMTP propio para los mails del código.
+- Terminar de configurar Supabase para los perfiles (ver «Supabase»): plantilla del mail con el código, direcciones,
+  SMTP propio y hacer entrenador a Bruno.
 
 ## Perfiles y vía de logros
 
@@ -134,33 +135,42 @@ Se entra desde «Entrar» en la cabecera (en pantallas anchas), desde «¿Ya esc
 
 ### Modo demo
 
-Mientras `js/app/config.js` no tenga los datos de Supabase, la app funciona en **modo demo**: todo queda en el navegador
-(los videos en IndexedDB), con datos de ejemplo (Bruno y algunas personas). En `/entrar` hay atajos para ver la vía de Sofía
-o entrar como Bruno, y sirve cualquier código de 6 números. «Empezar de cero» borra todo.
-Sirve para ver y probar el recorrido completo antes de tener la base.
+Si `supabaseUrl` o `supabaseClave` de `js/app/config.js` quedan vacíos, la app funciona en **modo demo**: todo queda
+en el navegador (los videos en IndexedDB), con datos de ejemplo (Bruno y algunas personas). En `/entrar` hay atajos para ver
+la vía de Sofía o entrar como Bruno, y sirve cualquier código de 6 números. «Empezar de cero» borra todo.
+Sirve para mostrar y probar el recorrido completo sin tocar la base de verdad.
 
-### Conectar Supabase
+### Supabase
 
-1. **Base de datos.** En el proyecto de Supabase, abrí el *SQL Editor* y corré
-   `supabase/migrations/20261125220000_perfiles_hitos_videos.sql` (o `supabase db push` con la CLI).
-   Crea las tablas `perfiles` y `hitos`, el bucket privado `videos` (hasta 50 MB por archivo) y las reglas de acceso.
-2. **Mail con código.** En *Authentication → Emails*, en las plantillas **Magic Link** y **Confirm signup**,
+Los perfiles, los hitos y los videos viven en el proyecto **la-roca** de Supabase
+(región São Paulo, plan gratis, dirección `https://vpahhojmxeztpjxbgihg.supabase.co`).
+La base ya está cargada con `supabase/migrations/20261125220000_perfiles_hitos_videos.sql`:
+las tablas `perfiles` y `hitos`, el bucket privado `videos` (hasta 50 MB por archivo) y las reglas de acceso.
+`js/app/config.js` ya tiene la dirección y la clave publicable (`sb_publishable_…`). Las dos son públicas:
+lo que protege los datos son las reglas de la base.
+
+Falta, en el panel de Supabase del proyecto:
+
+1. **Mail con código.** En *Authentication → Emails*, en las plantillas **Magic Link** y **Confirm signup**,
    pegá `supabase/plantillas/codigo.html` (asunto sugerido: «Tu código para entrar a La Roca»).
    Lo importante es `{{ .Token }}`: es el código de 6 números que la persona escribe en la página.
+   Sin esto, el mail trae solo un enlace (también sirve, tocándolo desde el mismo celu).
+2. **Direcciones.** En *Authentication → URL Configuration*, poné la dirección del sitio
+   (la de Vercel hasta que esté `https://murolaroca.com.ar`) y sumá en *Redirect URLs* esa misma, la de Vercel
+   y `http://localhost:4321`.
 3. **Envío de mails (necesario para abrir).** El servicio de mails que trae Supabase solo manda a los miembros
    del equipo del proyecto y muy pocos por hora. Para clientes de verdad hay que configurar un SMTP propio
    en *Authentication → Emails → SMTP* (por ejemplo Resend, que tiene plan gratis) y después subir el límite
    en *Authentication → Rate Limits*.
-4. **Direcciones.** En *Authentication → URL Configuration*, poné la dirección del sitio
-   (por ejemplo `https://murolaroca.com.ar`) y sumá en *Redirect URLs* la de Vercel y `http://localhost:4321`.
-5. **La app.** En `js/app/config.js` completá `supabaseUrl` y `supabaseClave` (la clave publicable, `sb_publishable_…`).
-   Las dos son públicas: lo que protege los datos son las reglas de la base. Con eso se apaga el modo demo.
-6. **Entrenadores.** Para que Bruno (o quien entrene) vea el panel, en el SQL Editor:
+4. **Entrenadores.** Para que Bruno (o quien entrene) vea el panel, en el *SQL Editor*:
    ```sql
    insert into public.perfiles (email, nombre, rol) values ('mail-de-bruno@ejemplo.com', 'Bruno', 'entrenador')
    on conflict (email) do update set rol = 'entrenador', nombre = coalesce(perfiles.nombre, excluded.nombre);
    ```
    Cuando entre con ese mail, queda vinculado.
+
+Para armar la base en otro proyecto: correr la migración en el *SQL Editor* (o `supabase db push` con la CLI),
+cambiar la dirección y la clave en `js/app/config.js` y la dirección en la política de contenido de `vercel.json`.
 
 ### Quién puede qué
 
@@ -193,11 +203,11 @@ psql -d prueba_la_roca -f supabase/pruebas/reglas-de-acceso.sql
   se comparte la imagen.
 - **Instagram de La Roca.** Cuando exista la cuenta, poné el usuario en `instagram` de `js/app/config.js`:
   aparece en el pie de la historia y en el texto para copiar. Los hashtags también están ahí (`#LaRoca`, `#EscaladaMDP`).
-- La política de contenido de `vercel.json` permite cualquier proyecto `*.supabase.co`. Con el proyecto definido,
-  se puede cerrar a esa dirección.
+- **Plan gratis.** Supabase pausa los proyectos gratis que pasan una semana sin uso; se reactivan desde el panel.
+  Con clases todas las semanas no debería pasar.
 
 ## Publicar en Vercel
 
 No necesita configuración de compilación: es un sitio estático y Vercel sirve la carpeta tal cual.
 `vercel.json` agrega encabezados de seguridad (incluida una política de contenido que solo permite
-fuentes de Google Fonts, videos de Mixkit y la conexión con Supabase) y caché corta para CSS, JS e imágenes.
+fuentes de Google Fonts, videos de Mixkit y la conexión con el proyecto de Supabase) y caché corta para CSS, JS e imágenes.

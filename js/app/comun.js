@@ -69,16 +69,19 @@ export async function iniciarPagina({ requiere = 'sesion' } = {}) {
     );
   }
 
+  let saliendo = false;
   for (const boton of $$('[data-accion="salir"]')) {
     boton.addEventListener('click', async () => {
+      saliendo = true;
       boton.disabled = true;
       await datos.salir();
-      location.href = 'entrar';
+      location.replace('entrar');
     });
   }
 
+  // Si la sesión se cierra en otra pestaña, volver a entrar (y después regresar acá)
   datos.alCambiarSesion((evento) => {
-    if (evento === 'SIGNED_OUT' && requiere) irAEntrar();
+    if (evento === 'SIGNED_OUT' && requiere && !saliendo) irAEntrar();
   });
 
   return perfil;

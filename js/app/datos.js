@@ -141,7 +141,8 @@ function crearSupabase() {
     },
 
     async salir() {
-      await cliente.auth.signOut();
+      // Solo en este dispositivo: salir en la compu no cierra la sesión del celu
+      await cliente.auth.signOut({ scope: 'local' });
       urlsFirmadas.clear();
     },
 

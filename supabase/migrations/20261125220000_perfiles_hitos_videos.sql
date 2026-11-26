@@ -7,7 +7,7 @@
 -- hitos     Los logros que el entrenador anota en cada clase. Forman
 --           la "vía" (la línea de vida) de cada perfil.
 -- videos    Bucket privado de Storage: un video corto por hito, en
---           la carpeta del perfil: <perfil_id>/<hito_id>.<ext>
+--           la carpeta del perfil: <perfil_id>/<uuid>.<ext> (uno nuevo por subida)
 --
 -- Quién puede qué (con Row Level Security):
 --   · Cada persona ve su perfil, sus hitos y sus videos, y puede

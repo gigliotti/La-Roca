@@ -7,8 +7,9 @@
 // (ver supabase/migrations).
 
 export const config = {
-  supabaseUrl: '',
-  supabaseClave: '',
+  // Proyecto "la-roca" en Supabase (São Paulo)
+  supabaseUrl: 'https://vpahhojmxeztpjxbgihg.supabase.co',
+  supabaseClave: 'sb_publishable_K6o2RmHRRlQVSzpNsDXOKQ_YOlyNyvy',
 
   // Usuario de Instagram de La Roca, sin @. Vacío hasta que exista la cuenta.
   instagram: '',
