@@ -110,8 +110,8 @@ en `data-endpoint` y en `action` del `<form>`, y agregá ese dominio a `connect-
 - Video y foto de Bruno.
 - Imagen para compartir en redes (`og:image`).
 - Conectar el formulario.
-- Terminar de configurar Supabase para los perfiles (ver «Supabase»): plantilla del mail con el código, direcciones,
-  SMTP propio y hacer entrenador a Bruno.
+- Terminar de configurar Supabase para los perfiles (ver «Supabase»): SMTP propio, plantilla del mail con el código
+  y hacer entrenador a Bruno.
 
 ## Perfiles y vía de logros
 
@@ -149,20 +149,21 @@ las tablas `perfiles` y `hitos`, el bucket privado `videos` (hasta 50 MB por arc
 `js/app/config.js` ya tiene la dirección y la clave publicable (`sb_publishable_…`). Las dos son públicas:
 lo que protege los datos son las reglas de la base.
 
+Ya está hecho: en *Authentication → URL Configuration*, la dirección del sitio es `http://localhost:4321`
+y `http://localhost:4321/**` está en *Redirect URLs*. Cuando el sitio esté en Vercel o en `https://murolaroca.com.ar`,
+hay que cambiar la dirección del sitio y sumar esas direcciones (con `/**`) a *Redirect URLs*.
+
 Falta, en el panel de Supabase del proyecto:
 
-1. **Mail con código.** En *Authentication → Emails*, en las plantillas **Magic Link** y **Confirm signup**,
-   pegá `supabase/plantillas/codigo.html` (asunto sugerido: «Tu código para entrar a La Roca»).
+1. **Envío de mails (necesario para abrir).** El servicio de mails que trae Supabase solo manda a los miembros
+   del equipo del proyecto, muy pocos por hora, y no deja cambiar el texto del mail. Hay que configurar un SMTP propio
+   en *Authentication → Emails → SMTP Settings* (por ejemplo Resend, que tiene plan gratis) y después subir el límite
+   en *Authentication → Rate Limits*. Mientras tanto se puede probar con el mail de quien administra el proyecto:
+   llega un mail con un enlace («Sign in») que hay que tocar desde el mismo celu o la misma compu.
+2. **Mail con código.** Con el SMTP propio, en *Authentication → Emails*, en las plantillas **Magic link or OTP**
+   y **Confirm sign up**, pegá `supabase/plantillas/codigo.html` (asunto sugerido: «Tu código para entrar a La Roca»).
    Lo importante es `{{ .Token }}`: es el código de 6 números que la persona escribe en la página.
-   Sin esto, el mail trae solo un enlace (también sirve, tocándolo desde el mismo celu).
-2. **Direcciones.** En *Authentication → URL Configuration*, poné la dirección del sitio
-   (la de Vercel hasta que esté `https://murolaroca.com.ar`) y sumá en *Redirect URLs* esa misma, la de Vercel
-   y `http://localhost:4321`.
-3. **Envío de mails (necesario para abrir).** El servicio de mails que trae Supabase solo manda a los miembros
-   del equipo del proyecto y muy pocos por hora. Para clientes de verdad hay que configurar un SMTP propio
-   en *Authentication → Emails → SMTP* (por ejemplo Resend, que tiene plan gratis) y después subir el límite
-   en *Authentication → Rate Limits*.
-4. **Entrenadores.** Para que Bruno (o quien entrene) vea el panel, en el *SQL Editor*:
+3. **Entrenadores.** Para que Bruno (o quien entrene) vea el panel, en el *SQL Editor*:
    ```sql
    insert into public.perfiles (email, nombre, rol) values ('mail-de-bruno@ejemplo.com', 'Bruno', 'entrenador')
    on conflict (email) do update set rol = 'entrenador', nombre = coalesce(perfiles.nombre, excluded.nombre);
